@@ -1,0 +1,31 @@
+.slds-icon {
+    border-radius: 10px;
+}
+.container {
+    border-radius: 6px;
+    box-shadow: 10px 20px 40px 0 rgba(173, 181, 189, 0.1);
+    border: solid 1px rgba(129, 147, 174, 0.12);
+    background-color: #fff;
+    max-width:1800px;
+    min-width:800px;
+    /*padding: 2% 1%;*/
+    background-color:rgb(250, 249, 248);  
+    /*margin-bottom: 4px;*/
+}
+.header-box{
+    /*font-size: 10pt;*/
+    border-radius: 5px 5px;
+    /*border: 1px solid #c9c9c9;*/
+    background-color: white;  
+}
+:host{
+    --slds-c-button-neutral-color-background: #FFFF;
+    --slds-c-button-color-background:var(#FFFF);
+}
+
+.newButton{
+    --slds-c-button-font-weight:400;
+    --dxp-s-button-font-size:0.9rem;
+    --dxp-s-button-font-weight:600;  
+    --sds-c-button-text-color :#181818;  
+}

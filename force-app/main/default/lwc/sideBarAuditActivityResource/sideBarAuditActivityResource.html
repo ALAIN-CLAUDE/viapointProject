@@ -1,0 +1,430 @@
+<template>
+   
+  <article class="slds-card">
+      <div class="slds-page-header slds-page-header_related-list">
+          <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">   
+              <div class="slds-media">
+                <div class="slds-media__body">
+                  <div class="slds-page-header__name">
+                    <div class="slds-page-header__name-title">  
+                      <lightning-icon icon-name="standard:product" size="small"></lightning-icon>           
+      
+                    </div>
+                    
+                <div align="left" style="position:relative;left:11px;font-size:15px; font-weight:bold; word-spacing: 03px;">
+                  <h3 slot="title">   
+                    
+                    Audit Activity Resources ({AuditActivityResourceCount})
+                </h3>
+                 </div>
+       
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-page-header__col-actions">
+              <div class="slds-page-header__controls">
+                <div class="slds-page-header__control">
+                  <ul class="slds-button-group-list">
+                    <li>
+                      <lightning-button-menu alternative-text="Show menu" variant="border-filled" menu-alignment="auto"  icon-size="x-small">
+                          <lightning-menu-item  onclick={handleNewButton} label="New"></lightning-menu-item>
+                      </lightning-button-menu>
+                    </li>
+                   
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      <template if:true={Processeddata}>
+        <template for:each={Processeddata} for:item="audActRes">   
+          
+          <article class="slds-card" key={audActRes.Id} >
+            <div class="slds-card__header slds-grid" >
+            <div class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+            <span class="slds-icon_container slds-icon-standard-contact" title="contact">
+          
+            <span class="slds-assistive-text">Audit Activity Resources</span>
+            </span>
+            </div>
+          <div class="slds-media__body" style="position: relative; right: 12px;">
+           
+          <div  class="slds-tile__title slds-truncate">
+       
+            <div  class="slds-grid">
+              
+    
+              
+            <a  href={audActRes.NameUrl} tabindex="0" class="flex-wrap-ie11 bordero slds-truncate"><slot ><slot >
+            <span  ><p>{audActRes.Name}</p> </span></slot></slot>
+          </a>
+          
+            </div>
+            
+          <div  class="slds-tile__detail" >
+            <dl  class="slds-list_horizontal slds-wrap" key={audActRes.Id}>
+            <dt  class="slds-item_label slds-text-color_weak slds-truncate">Resource Title:</dt>
+            <dd  class="slds-item_detail slds-truncate">
+              <a target="_blank" href={audActRes.ResourceUrl}>  {audActRes.ResourceTitle__c} </a> 
+            </dd>
+            <dt  class="slds-item_label slds-text-color_weak slds-truncate">Resource Type:</dt>
+            <dd  class="slds-item_detail slds-truncate">
+            <span> {audActRes.AuditResource__r.ResourceType__c}    </span>
+          </dd>
+            <dt  class="slds-item_label slds-text-color_weak slds-truncate">Audit Activity Resource Workflow Status:</dt>
+            <dd  class="slds-item_detail slds-truncate">
+              <span>  {audActRes.ActivityResourceWorkflowStatus__c } </span>
+          </dd>       
+        </dl>
+          </div>
+          </div>
+         
+            </div>
+            <div class="slds-no-flex" style="position: relative;">
+              
+              <lightning-button-menu  alternative-text="Toggle menu" variant="border-filled" menu-alignment="auto"  icon-size="x-small"  onselect={handleMenuItem}>
+                <P onclick={editCurrentRecord} data-recid={audActRes.Id} >
+                    <lightning-menu-item label="Edit">
+                    </lightning-menu-item>
+                </P>
+                <p onclick={deleteAuditActRes} data-recid={audActRes.Id}>
+                    <lightning-menu-item label="Delete">
+                    </lightning-menu-item>
+                </p>
+            </lightning-button-menu>
+
+            </div>
+
+            </div>
+            </div>
+
+        
+           
+            </article>
+    
+    </template>   
+ 
+
+      <footer class="slds-card__footer">
+        <a onclick={navitageToLWCWithoutAura}>
+         
+          <span  class="view-all-label">
+          View All
+          <span class="assistiveText">Audit Activity Resources
+          </span></span></a>
+
+
+      </footer>
+    </template>
+
+      </article>
+
+
+        
+     <!--this is New button section ends here-->   
+     
+    <template if:true={isModalOpen}>          
+      <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+       <div class="slds-modal__container">
+         <header class="slds-modal__header">
+           <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                 
+             <lightning-icon icon-name="utility:close"
+             alternative-text="close"
+             variant="inverse"
+             size="small" ></lightning-icon>
+             <span class="slds-assistive-text">Close</span>
+           </button>  
+         <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">New Audit Activity Resource</h2>
+         </header>
+         <div class="slds-modal__content slds-p-around_small" id="modal-content-id-1">
+           <lightning-card>
+           <template if:true={loaded}>
+             <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+         </template>
+       
+         <h3   class="test-id__section-header-container padder slds-section__title slds-theme--shade">
+           <span  class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">Request</span>
+           </h3>
+           
+       <!-- <div class="slds-var-p-around_small">  -->
+           <div class="align-with-title">
+            <div class="slds-form-element">
+              <label class="slds-form-element__label" for="text-input-id-5">Audit Activity Number</label>
+              
+              <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                  <lightning-icon size="x-small" class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" icon-name="custom:custom70"></lightning-icon>
+                  <input type="text" id="text-input-id-5" value={AuditActivityName}  class="slds-input" readonly/>
+              
+              </div>
+          </div>
+   
+       
+           <lightning-combobox
+                         class="validate"
+                         name="Resource"
+                         label="Resource"
+                         dropdown-alignment="auto"
+                         required="true"
+                         type="text"
+                         placeholder="Choose Resource"
+                         value={value}
+                         onchange={newAudActReshandleChange}
+                         options={Resoptions}>                 
+               </lightning-combobox>  
+         
+     <br>
+        <!--          <p>Selected value is: {selectedValue}</p> -->
+           <lightning-combobox
+               class="validate"
+               name="Request Allocation Method"
+               label="Request Allocation Method"
+               dropdown-alignment="auto"
+               required="true"
+               value={reqAlloMethValue}
+               placeholder="Select Request Allocation Method"
+               options={ReqAllMethodoptions}
+               onchange={newAudActReshandleChange} ></lightning-combobox>
+     
+     <!--     <p>Selected req allo method value is: {reqAlloMethValue}</p> -->
+     <br>
+               <lightning-input
+                 class="validate"
+                 label="Request Allocation Units"
+                 name="Request Allocation Units"
+                 required
+                 type="Number"
+                 value={RequestAllocationUnitsvalue}
+                 onchange={newAudActReshandleChange}
+               ></lightning-input>
+     <br>
+               <lightning-textarea 
+               class="validate"
+               label="Request Description"
+               name="Request Description"
+               value={RequestDescripValue}
+               onchange={newAudActReshandleChange}
+               required="true"
+                >
+             </lightning-textarea>
+     <br>
+             <lightning-combobox
+             class="validate"
+             name="Audit Activity Resource Workflow Status"
+             dropdown-alignment="auto"
+             label="Audit Activity Resource Workflow Status"
+             required="true"
+             value={audActResWorkStatValue}
+             placeholder="Select Request Allocation Method"
+             options={audActResWorkStatoptions}
+             onchange={newAudActReshandleChange} >
+           </lightning-combobox>
+           <!--   <p>Selected AudActResource Workflow Status value is: {audActResWorkStatValue}</p> -->
+        
+           </div>
+         </lightning-card>
+         </div>
+       
+         <footer class="slds-modal__footer">
+                   
+         <div class="slds-align_absolute-center slds-border_leftslds-border_left" style="height: 2.5rem">
+           <div class="slds-clearfix slds-border_leftslds-border_left" style="margin-right:5px">
+           <div class="slds-float_left">
+             <lightning-button  variant="neutral" label="Cancel" title="Cancel" onclick={closeModal}>Cancel</lightning-button>
+           </div>
+       </div>
+       <div class="slds-clearfix slds-border_leftslds-border_left" >
+           <div class="slds-align_absolute-center">
+             <lightning-button label="Save &amp; New" variant="neutral" type="submit" onclick={handleSaveAndNew}> </lightning-button>
+           </div>
+       </div>
+       <div class="slds-clearfix slds-border_leftslds-border_left" style="margin-left:5px">
+           <div class="slds-float_right">
+             <lightning-button label="Save" variant="brand" type="submit" onclick={handleSave}></lightning-button>
+           </div>
+       </div>
+     </div>
+ 
+         </footer>
+       </div>
+     </section>
+     <div class="slds-backdrop slds-backdrop_open"></div>
+ 
+   </template>
+ 
+     
+
+
+      <!--Edit button Detail view modal starts -->
+      <template if:true={bShowModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+          <div class="slds-modal__container">
+            <header class="slds-modal__header">
+              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+              </button>
+              <h2  id="edit-aar-000116-796" class="slds-modal__title slds-hyphenate slds-text-heading--medium">Edit {currentRecordName}</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_small" id="modal-content-id-11">
+              <template if:true={loaded}>
+                <div class="slds-spinner_container">
+                    <div class="slds-spinner--brand  slds-spinner slds-spinner--small slds-is-relative" role="alert">
+                      <span class="slds-assistive-text">Loading...</span>
+                      <div class="slds-spinner__dot-a"></div>
+                      <div class="slds-spinner__dot-b"></div>
+                    </div>
+                  </div>
+                  </template>
+                
+           <h3  class="test-id__section-header-container padder1 slds-section__title slds-theme--shade">
+                <span  class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">Request</span>
+           </h3>
+        <!-- showing record edit form -->
+            <div if:true={isEditForm} class="slds-theme_default slds-p-around_small align-with-title">   
+              <lightning-record-edit-form layout-type="Full" 
+              record-id={currentRecordId} 
+              object-api-name="AuditActivityResource__c" 
+              onsubmit={handleSubmit} 
+              onsuccess={handleSuccess} 
+             >
+                  <lightning-messages></lightning-messages>
+                  <lightning-output-field  field-name="Audit__c"  >
+                  </lightning-output-field>
+                  <lightning-output-field  field-name="AuditTitle__c">
+                  </lightning-output-field>
+                  <lightning-output-field  field-name="AuditActivity__c" >
+                  </lightning-output-field>
+                  <lightning-output-field  field-name="AuditActivityTitle__c" >
+                  </lightning-output-field>
+                  <lightning-input-field field-name="AuditResource__c" required="true">
+                  </lightning-input-field>   
+                  <lightning-output-field  field-name="ResourceTitle__c" >
+                  </lightning-output-field>
+                  <lightning-input-field field-name="Name">
+                  </lightning-input-field>
+                  <lightning-input-field field-name="RequestAllocationMethod__c" required="true"></lightning-input-field>
+                  <lightning-input-field field-name="RequestAllocationUnits__c" required="true">
+                  </lightning-input-field>
+                  <lightning-input-field field-name="RequestAllocationFte__c">
+                  </lightning-input-field>
+                  <lightning-input-field field-name="RequestAllocationHours__c">
+                  </lightning-input-field>
+                  <lightning-input-field field-name="RequestDescription__c" required="true">
+                  </lightning-input-field>
+                  <lightning-input-field field-name="ActivityResourceWorkflowStatus__c">
+                  </lightning-input-field>
+     
+                 <br/>
+          
+        
+              </lightning-record-edit-form>
+      
+            </div>
+         
+      <h3 class="test-id__section-header-container padder slds-section__title slds-theme--shade">
+              <span  class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">System Information </span>
+     </h3>
+   
+     <div class="slds-p-horizontal_x-small slds-grid slds-gutters align-with-title moveIt">
+      <div class="slds-col slds-p-left_x-large ">
+      
+        <div  class="test-id__field-label-container slds-form-element__label no-utility-icon"><span  class="test-id__field-label">Created By</span></div>
+        <div  class="slds-form-element__control">
+        <div  class="slds-grid"><span force-recordavatar_recordavatar="" class="record-avatar-container slds-avatar slds-avatar_x-small slds-avatar--circle slds-m-right_xx-small">
+        <img  src={UserProfilePics} title="User" alt="User"></span><span  class="displayLabel">
+        <slot >{createdbyUserName},
+           <lightning-formatted-date-time value={CreatedDate} year="numeric" month="numeric" day="numeric" hour="2-digit"
+            minute="2-digit" time-zone={UserTimeZone} time-zone-name="short" hour12="false"></lightning-formatted-date-time>    
+      </slot></span></div>
+    
+    
+      </div>
+    </div>
+     
+      <div class="slds-col ">
+      <div  class="test-id__field-label-container slds-form-element__label no-utility-icon"><span  class="test-id__field-label">Last Modified By</span></div>
+      <div  class="slds-form-element__control">
+      <div  class="slds-grid"><span force-recordavatar_recordavatar="" class="record-avatar-container slds-avatar slds-avatar_x-small slds-avatar--circle slds-m-right_xx-small">
+      <img  src={UserProfilePics} title="User" alt="User"></span><span  class="displayLabel">
+      <slot >{modifiedbyName},
+         <lightning-formatted-date-time value={LastModifiedDate} year="numeric" month="numeric" day="numeric" hour="2-digit"
+          minute="2-digit" time-zone={UserTimeZone} time-zone-name="short" hour12="false"></lightning-formatted-date-time>    
+    </slot></span></div>
+  
+  
+  
+    
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+    </div>
+    
+   
+          <footer class="slds-modal__footer">
+                    
+            <div class="slds-align_absolute-center slds-border_leftslds-border_left" style="height: 2.5rem">
+              <div class="slds-clearfix slds-border_leftslds-border_left" style="margin-right:5px">
+              <div class="slds-float_left">
+                <lightning-button  variant="neutral" label="Cancel" title="Cancel" onclick={closeModal}>Cancel</lightning-button>
+              </div>
+          </div>
+          <div class="slds-clearfix slds-border_leftslds-border_left" >
+              <div class="slds-align_absolute-center">
+                <lightning-button label="Save &amp; New" variant="neutral" type="submit" onclick={handleSubmitAndNew}> </lightning-button>
+              </div>
+          </div>
+          <div class="slds-clearfix slds-border_leftslds-border_left" style="margin-left:5px">
+              <div class="slds-float_right">
+                <lightning-button label="Save" variant="brand" type="submit" onclick={handleSubmitButtonClick}></lightning-button>
+              </div>
+          </div>
+        </div>
+    
+            </footer>         
+         
+          </div>
+         
+        </section>
+      
+        <div class="slds-backdrop slds-backdrop_open"></div>
+      </template>
+      
+      <template if:true={deleteShowModal}>  
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-1" class="slds-text-heading_medium slds-hyphenate">Delete Audit Activity Resource</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium slds-text-align_center" id="modal-content-id-01">
+                    <p> Are you sure you want to delete this Audit Activity Resource?</p> 
+                    
+        
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={DeleteRecord} title="Delete">Delete</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+ </template>
+  
+</template>

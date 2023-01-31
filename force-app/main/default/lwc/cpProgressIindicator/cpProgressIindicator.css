@@ -1,0 +1,21 @@
+.index-style{
+    z-index: 0;
+}
+
+.slds-tabs--path .slds-is-current {
+    background-color: #ff6000!important;
+}
+.slds-progress-bar__value{
+    background-color: rgb(42, 56, 141);
+}
+.slds-path__nav .slds-is-active{
+    background-color: rgb(0, 15, 89);;
+}
+.slds-path__nav .slds-is-complete {
+    background-color: rgba(65, 148, 249, 1);
+}
+:host {
+    --slds-c-badge-color-background: var(--c-example-purple);
+    --slds-c-badge-text-color: var(--c-example-white);
+    --slds-c-badge-radius-border: var(--c-example-border-radius-small);
+  }

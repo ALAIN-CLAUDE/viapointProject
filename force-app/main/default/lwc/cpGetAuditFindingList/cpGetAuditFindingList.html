@@ -1,0 +1,17 @@
+<template>
+    <lightning-card icon-name="custom:custom45" title="Audit Findings">
+        <div class="slds-m-around_medium">
+            <template if:true={audFindObj}>
+                <lightning-datatable key-field="Id" 
+                data={audFindObj} 
+                columns={columns} 
+                onsave={saveHandleAction}
+                draft-values={fldsItemValues} 
+                hide-checkbox-column 
+                show-row-number-column>
+               </lightning-datatable>
+            </template>
+        </div>
+    </lightning-card>
+
+</template>

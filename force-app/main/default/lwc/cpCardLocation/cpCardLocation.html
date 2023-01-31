@@ -1,0 +1,101 @@
+<template>
+    <div class="container slds-m-bottom_medium"> 
+        <div class="slds-p-around_x-small slds-page-header__title slds-truncate header-section">
+        <a href={urlLocations}>Locations</a>   
+        </div>       
+        <div class="slds-grid slds-wrap" >
+          
+            <template for:each={locationData} for:item="location">           
+                <div key={locationData.Id} class="slds-col slds-box_x-small            
+                slds-large-size_1-of-2 
+                slds-max-small-size_2-of-2 slds-small-size_2-of-2 
+                slds-size_1-of-2 slds-medium-size_2-of-2  
+                slds-max-medium-size_2-of-2"
+                >
+            <div class={location.unitClass}> 
+                <div class="slds-p-top_xx-medium slds-clearfix slds-p-around_x-small">
+                    <div class="slds-box_x-small slds-text-body_small text-gray">
+                        <p class="slds-float_left">Status</p>
+                        <p class="slds-float_right">Type</p>
+                          
+                    </div>
+                    <div class="slds-box_x-small">
+                        <p class="slds-float_left text-bold">{location.Account__r.AccountWorkflowStatus__c}</p> 
+                        <p class=" slds-float_right text-bold">{location.LocationType__c}</p>
+                    </div>
+                </div>
+            <div class="slds-align_absolute-center text-bold">
+            <c-record-link
+                object-api-name={objectApiName}
+                record-id={location.Id}
+                label={location.Name}>
+            </c-record-link>
+            </div>
+            <div class="slds-align_absolute-center">
+                <p class="text-bold">
+                    LN-000001
+                </p> 
+            </div>
+            <div class="slds-box_xxx-small slds-icon slds-icon_x-small slds-align_absolute-center slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"> 
+                <c-cp-edit-menu item={location}></c-cp-edit-menu>  
+            <!--
+                <lightning-button-menu   aria-pressed="false" class="menuClass" variant="bare"  onselect={handleMenuSelect}
+                 alternative-text="Show menu">
+                    <lightning-menu-item                                           
+                    value="Edit" 
+                    name={income.Id}                
+                    icon-name={iconName}               
+                    icon-position="left"
+                    onclick={handleOnselect}
+                    label="Edit">                    
+                    </lightning-menu-item>
+                <lightning-menu-item
+                    icon-name={iconDeleteName} 
+                    value="Delete" 
+                    label="Delete">
+                </lightning-menu-item>                            
+                </lightning-button-menu>-->                     
+            </div>
+            <div class="slds-p-bottom_x-small">
+            <div class="slds-clearfix slds-p-horizontal_x-small">
+                <div class="slds-box_x-small slds-text-body_small text-gray">
+                    <p class="slds-float_left">Timezone</p>
+                    <p class="slds-float_right">Assigned To</p>
+                      
+                </div>
+                <div class="slds-box_x-small">
+                    <div class="slds-float_left text-bold">{location.TimeZone__c}</div> 
+             
+                
+                
+                     
+                    <div class=" slds-float_right text-bold">                
+                    <span  aria-describedby="help" 
+                        data-target-id={location.Id} 
+                        onmouseenter={handleMouseover} 
+                        onmouseleave={handleMouseLeave}
+                        style="padding-left:1rem;padding-top:4rem;position:relative"
+                        aria-disabled="true"
+                       >
+                        <img  class="slds-float_right record-avatar-container 
+                        slds-avatar slds-avatar_x-small 
+                        slds-avatar--circle 
+                        slds-m-left_xx-large"  
+                        src={location.CreatedBy.SmallPhotoUrl} >
+                        <div class="slds-popover slds-hide slds-slide-from-top-to-bottom slds-popover_tooltip slds-nubbin_bottom-left" 
+                        role="tooltip" data-id={location.Id} style="position:absolute;top:-4px;left:35px">
+                        <div class="slds-popover__body">{location.CreatedBy.Name}</div>
+                    </div>
+                    </span>
+                    </div>
+                </div>
+                 
+
+            </div> 
+            </div>                              
+        </div>   
+        </div>
+            </template>
+        </div>
+    </div> 
+</template>

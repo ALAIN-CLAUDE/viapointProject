@@ -1,0 +1,89 @@
+<template>
+    Hi WORLD
+                <th data-label="AuditName" scope="row" >
+                    <div class="slds-truncate" title="AuditName">
+                     
+                    </div>
+                </th>
+                <template for:each={items} for:item="itemValue" >
+                    <tr class="slds-hint-parent" key={itemValue.Id}>
+                        <th data-label="" scope="row">
+                            {itemValue.Status} data-id={itemValue.Id}
+                        </th> 
+                        <td> <c-row-input-comp  item-value={itemValue.Id}></c-row-input-comp>  </td>
+                       <!--
+                        <td data-label="Value1">
+                            <lightning-input 
+
+                            data-id={itemValue.Id} 
+                            onchange={handleNumberChange} 
+                            type="number"
+                             name="input1" 
+                             value={itemValue.selectedValue1}></lightning-input>
+                        </td>
+                        <td data-label=" Value1">
+                            <lightning-input 
+                            data-id={itemValue.Id} 
+                            onchange={handleNumberChange2}  
+                            type="number" 
+                            name="input2" 
+                            value={itemValue.selectedValue2}></lightning-input>
+                        </td>
+                        <td data-label=" RESULT">
+                           <input  type="number" id={itemValue.id} name="input3" 
+                           value={resultSum}/>
+                        </td>-->
+                    </tr>
+</template>
+
+            <!--
+                <tr class="slds-hint-parent" key={itemValue.id} style="border:2px solid blue; margin:2px;"> 
+                <td> {itemValue.Status}
+                    <lightning-record-edit-form object-api-name="Order">
+                        <lightning-messages></lightning-messages>
+                    <lightning-input-field label="TaxAmount" field-name="SBQQ__TaxAmount__c"> </lightning-input-field>
+                </lightning-record-edit-form>
+                </td>
+                <td  data-target-id={itemValue.id} >
+                    <label class="slds-form-element__label" for="text-input-id-1">
+                        <abbr class="slds-required" title="required">* </abbr>Custom Value 1
+                    </label>
+                    <lightning-input type="number" name="value1" id={itemValue.id}              
+                    onchange={handleNumberChange} 
+                    value={itemValue.selectedValue1} ></lightning-input>
+                    <div class="slds-form-element__control">
+                        <input type="number" name={itemValue.id} id={itemValue.id}              
+                        onchange={handleNumberChange} 
+                        value={itemValue.selectedValue1} 
+                        class="slds-input" />
+                       
+                    
+                    </div>                    
+                    <label class="slds-form-element__label" for="text-input-id-7">
+                        <abbr class="slds-required" title="required">* </abbr>Custom Value 2</label>
+                        <input type="number" data-name={itemValue.id}  id={itemValue.id}
+                        name={value1}
+                        data-target-id={itemValue.id}
+                        onchange={handleNumberChange} 
+                        value={itemValue.selectedValue2}
+                        class="slds-input" >
+                        </input>                  
+                        <label class="slds-form-element__label" for="text-input-id-3">
+                            <abbr class="slds-required" title="required">* </abbr>Sum result</label>
+                        
+                        <div class="slds-form-element__control">
+                        <input type="number" id={itemValue.id} data-target-id={itemValue.id}
+                        name={itemValue.id} 
+                        value={itemValue.selectedValue3} placeholder="" required="" class="slds-input" />
+                      </div> 
+                    </td>
+                
+                <td data-label="child score">
+                    <div class="slds-truncate">
+                        <c-row-input record-id={itemValue.id}></c-row-input>
+                                                          
+                    </div>
+                </td>
+            </tr>
+    </template >-->
+</template>

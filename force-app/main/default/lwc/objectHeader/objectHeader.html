@@ -1,0 +1,51 @@
+<template>
+   
+    <div class="container">
+        <div class="header-box">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_2-of-3">
+                    <template if:true={objectInfo}>
+                        <div class="slds-media slds-no-space slds-grow slds-p-around_large">
+                            <div class="slds-media__figure slds-align-middle">                            
+                                <span class="slds-icon_container">
+                                    <div class="slds-icon slds-icon_large" style={iconStyle}>
+                                        <img src={objectInfo.themeInfo.iconUrl}></img>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                <span class="slds-page-header__title slds-truncate" title={label}>
+                                    {label}
+                                </span>
+                                    <span style="font-size:18px; font-weight:700;" title={recordName}>
+                                    {recordName}
+                                    </span>                               
+                                </h1>                            
+                                
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <div class="slds-float_right slds-page-header__col-actions slds-media slds-no-space slds-grow slds-p-around_large ">
+                        <div class="slds-page-header__controls">
+                        <div class="slds-page-header__control slds-m-top_x-small">
+                           
+                                <ul class="slds-button-group-list">
+                                    <li>
+                                        <button class="slds-button slds-button_neutral newButton">Follow</button>
+                                    </li>                           
+                                    <li>
+                                        <button class="slds-button slds-button_neutral newButton">Edit</button>
+                                    </li>
+                                </ul>
+                           
+                        </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    </template>

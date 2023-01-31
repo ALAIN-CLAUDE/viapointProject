@@ -1,0 +1,72 @@
+.container {
+    border-radius: 6px;
+    box-shadow: 10px 20px 40px 0 rgba(173, 181, 189, 0.1);
+    border: solid 1px rgba(129, 147, 174, 0.12);
+    background-color: #fff;
+    /*max-width:1800px;
+    min-width:800px;*/
+    padding: 2% 1%;
+    background-color:rgb(250, 249, 248) !important;  
+}
+.bg-accordion {
+    background-color: #fff !important;
+    background-color:var(--slds-c-accordion-summary-color-background, #fff);
+   
+}
+
+.text-gray {
+    font-size:12px;
+    color: hsl(234, 12%, 34%);
+}
+.static-text {
+    --dxp-s-font-size-8: 16px;    
+    font-size: var(--lwc-c-inputStaticFontSize, 16px);
+}
+
+.buttonValue{
+    --dxp-s-button-font-weight:400;
+    --dxp-s-button-font-size:1.05rem;
+}
+
+.slds-form-element__static{
+    font-size: 15rem !important;
+}
+.slds-form-element__static lightning-formatted-text{
+    font-size: 15rem;
+}
+:host .slds-form-element__static {
+    font-size: 18px;
+} 
+:host(.slds-input_height) {
+    height:16px;
+}
+:host {
+    --slds-c-accordion-summary-color-background: var(#FFFF);
+    --slds-c-accordion-heading-text-color:#181818;
+    --slds-c-accordion-heading-font-weight: 800;
+    --sds-c-accordion-heading-font-size:1.5rem;
+    --slds-c-accordion-summary-color-background:transparent;
+    --slds-c-accordion-heading-line-height:1.25;
+    --slds-c-input-faux-color-background-focus: var(#FFFF);
+    --slds-c-input-color-background: transparent;
+    --slds-c-input-color-background-focus:transparent;
+    --dxp-s-form-element-color-background-active:transparent;
+    --dxp-s-form-element-color-background: transparent;
+    --dxp-s-form-element-font-size: 1.5rem;
+    --dxp-g-font-size-4: 1.75rem;
+    --slds-c-dropdown-color-background: transparent;
+    --slds-c-button-brand-color-background: rgb(42, 56, 141);
+    --slds-c-button-brand-color-background: var(#2A388D);
+    --dxp-s-button-font-weight:900;
+    --dxp-s-button-font-size:1.25rem;
+    --lwc-c-input-static-font-size: var(16px);
+    --slds-c-output-font-size: 16px;
+    --slds-c-output-font-size: 1.6rem;
+    --dxp-s-form-output-font-size: 16px;
+    --lwc-inputStaticFontWeight: bold;
+    --lwc-inputStaticFontSize: 18px;
+    --sds-c-output-field-font-size: 18px;
+    --lwc-c-formatted-text-font-size:18px;
+    --slds-c-output-field: 16px;
+    --dxp-s-output-field-font-size: 1.5rem;
+}

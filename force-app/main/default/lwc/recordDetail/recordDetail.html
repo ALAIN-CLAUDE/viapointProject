@@ -1,0 +1,599 @@
+<template>
+    <div class="slds-grid slds-gutters slds-wrap">
+        <div class="slds-col slds-order_1                     
+        slds-large-size_4-of-12 slds-max-small-size_12-of-12 slds-small-size_12-of-12 
+        slds-size_4-of-12 slds-medium-size_12-of-12 slds-max-medium-size_12-of-12
+        slds-size_4-of-12">
+            <div class="container">
+            <!--<c-cp-object-header object-api-name={objectApiName} record-id={recordId}></c-cp-object-header>-->
+            <div class="slds-var-m-around_medium">
+                <lightning-record-edit-form
+                    object-api-name={objectApiName}
+                    record-id={recordId}
+                    onsubmit={handleSubmit} 
+                    onsuccess={handleSuccess} >
+                    <c-show-toast-message auto-close-time="8000"></c-show-toast-message>
+                <lightning-messages></lightning-messages>
+                <lightning-accordion
+                    allow-multiple-sections-open
+                    active-section-name={activeSections} class="accordionClass">
+                <lightning-accordion-section class="bg-accordion accordionClass" name="A" label="General">
+                    <div class="slds-p-vertical_large slds-p-horizontal_small bg-accordion">
+                    <label class="text-gray slds-p-bottom_x-small" for="text-input-id-47">
+                        Audit Title
+                    </label>       
+                    <div class="slds-form-element static-text static-text">
+                        <p>
+                            <lightning-formatted-text value={auditTitle}>
+                            </lightning-formatted-text>
+                        </p>
+                    </div>
+                    <div class="slds-form-element static-text">
+                    <label class="slds-p-bottom_x-small text-gray  " for="text-input-id-47">
+                        Organization
+                    </label>
+                    <p>
+                        <lightning-formatted-text 
+                            value={auditOrganization} >
+                        </lightning-formatted-text> 
+                    </p>
+                    </div>
+                    <div class="slds-form-element static-text">
+                    <label class="slds-p-bottom_x-small text-gray  " for="text-input-id-47">
+                        Location
+                    </label> 
+                    <p>
+                        <lightning-formatted-text 
+                            value={auditLocation} >
+                        </lightning-formatted-text> 
+                    </p>
+                    </div>
+                    <div class="slds-form-element static-text">
+                    <label class="slds-p-bottom_x-small text-gray" for="text-input-id-47">
+                        Department
+                    </label>                    
+                    <p>
+                        <lightning-formatted-text 
+                            value={auditDepartment} >
+                        </lightning-formatted-text> 
+                    </p>
+                    </div>
+                    <div class="slds-form-element static-text">
+                    <label class="slds-p-bottom_x-small text-gray" for="text-input-id-45">                                  
+                        Audit Type</label>
+                        <p>
+                            <lightning-formatted-text 
+                                value={auditType} >
+                            </lightning-formatted-text> 
+                        </p>
+                    </div>
+                    <div class="slds-form-element static-text">
+                    <label class="slds-p-bottom_x-small text-gray" for="text-input-id-49">                                  
+                        Audit Reason</label>
+                        <p>
+                            <lightning-formatted-text 
+                                value={auditReason} >
+                            </lightning-formatted-text> 
+                        </p>
+                    </div>
+                    <div class="slds-form-element static-text">
+                    <label class="slds-p-bottom_x-small text-gray" for="text-input-id-47">                                  
+                        Audit Scope
+                    </label>
+                    <p>
+                        <lightning-formatted-text 
+                            value={auditScope} >
+                        </lightning-formatted-text> 
+                    </p>                   
+                    </div>
+                <div class="slds-form-element static-text">
+                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                    Lead Auditor
+                </label>
+                <p>
+                    <lightning-formatted-text 
+                        value={auditInternal} >
+                    </lightning-formatted-text> 
+                </p>
+                </div>
+                    <div class="slds-form-element static-text">
+                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                        Lead Auditor External
+                    </label>
+                    <p>
+                        <lightning-formatted-text 
+                            value={auditExternal} >
+                        </lightning-formatted-text> 
+                    </p>
+                        
+                    </div>
+                    <div class="slds-form-element static-text">
+                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                        Auditee Internal Primary Contact
+                    </label>
+                    <p>
+                        <lightning-formatted-text 
+                            value={auditInternalPrimary} >
+                        </lightning-formatted-text> 
+                    </p>
+                    </div>
+                    <div class="slds-form-element static-text">
+                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                        Auditee External Primary Contact
+                    </label>     
+                    <template if:true={contactOptions}>                        
+                            <lightning-combobox 
+                            variant="label-hidden"
+                            data-field="AuditeeExternalPrimaryContact"
+                            field-name='AuditeeExternalPrimaryContact__c'                            
+                                value={contactAudit}
+                                options={contactOptions}
+                                onchange={handleRecordSelected}                            
+                                class="slds-var-m-bottom_medium"                            
+                            ></lightning-combobox>
+                       
+                    </template>
+                    </div>
+                <div class="slds-form-element static-text">
+                <label class="text-gray slds-p-bottom_x-small" for="text-input-id-47">
+                    Status
+                </label>
+                    <p>
+                        <lightning-formatted-text 
+                            value={auditStatus} >
+                        </lightning-formatted-text> 
+                    </p>
+                  
+                    <div class="slds-var-m-top_medium">
+                        <lightning-button
+                            class="buttonValue"                            
+                            variant="brand"
+                            type="submit"
+                            onclick={handleSubmit} 
+                            name="save"
+                            label="Save"
+                        ></lightning-button>
+                    </div>
+                </div>
+                    </div>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section class="bg-accordion" name="B" label="Planning - Audit Days">
+                            <div class="slds-p-vertical_large slds-p-horizontal_small bg-accordion">  
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                    Audit Days Required
+                                </label>
+                                <p>
+                                <lightning-formatted-number 
+                                    value={auditDaysRequired}>
+                                </lightning-formatted-number>                                   
+                                </p> 
+                            </div>
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  Audit Hours Required</label>
+                                  <p>
+                                    <lightning-formatted-number 
+                                        value={auditHoursRequired}>
+                                    </lightning-formatted-number>                                     
+                                </p>                                  
+                            </div>
+                            </div>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section class="bg-accordion" name="C" label="Planning">
+                            <div class="slds-p-vertical_large slds-p-horizontal_small">
+                            <div class="slds-form-element static-text">
+                            <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                Earliest Start
+                            </label>
+                            <p>
+                                <lightning-formatted-date-time 
+                                    value={auditEarliesStart} 
+                                    year="numeric"
+                                    month="numeric"
+                                    day="numeric" 
+                                    time-zone="UTC">                            
+                                </lightning-formatted-date-time>
+                            </p>
+                            </div>
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  Latest Start
+                                </label>
+                                <p>
+                                    <lightning-formatted-date-time 
+                                        value={auditLatestStart} 
+                                        year="numeric"
+                                        month="numeric"
+                                        day="numeric" 
+                                        time-zone="UTC">                            
+                                    </lightning-formatted-date-time>
+                                </p>
+                            </div>              
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  Earliest Finish
+                                </label>
+                                <p>
+                                    <lightning-formatted-date-time 
+                                        value={auditEarliesFinish} 
+                                        year="numeric"
+                                        month="numeric"
+                                        day="numeric" 
+                                        time-zone="UTC">                            
+                                    </lightning-formatted-date-time>
+                                </p>
+                            </div>
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                Latest Finish
+                            </label>
+                            <p>
+                                <lightning-formatted-date-time 
+                                    value={auditLatestFinish} 
+                                    year="numeric"
+                                    month="numeric"
+                                    day="numeric" 
+                                    time-zone="UTC">                            
+                                </lightning-formatted-date-time>
+                            </p>
+                            </div>
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  Planned Start
+                                </label>
+                                <p>
+                                    <lightning-formatted-date-time 
+                                        value={auditPlannedStart} 
+                                        year="numeric"
+                                        month="numeric"
+                                        day="numeric" 
+                                        time-zone="UTC">                            
+                                    </lightning-formatted-date-time>
+                                </p>
+                            </div>
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  Planned Finish
+                                </label>
+                                <p>
+                                    <lightning-formatted-date-time 
+                                        value={auditPlannedFinish} 
+                                        year="numeric"
+                                        month="numeric"
+                                        day="numeric" 
+                                        time-zone="UTC">                            
+                                    </lightning-formatted-date-time>
+                                </p>
+                            </div>
+                            </div>
+                        </lightning-accordion-section>
+                
+                        <lightning-accordion-section class="bg-accordion" name="D" label="Execution">
+                            <div class="slds-p-vertical_large slds-p-horizontal_small">
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      Actual Start
+                                    </label>                                   
+                                        <p>
+                                            <lightning-formatted-date-time 
+                                                value={auditActualStart} 
+                                                year="numeric"
+                                                month="numeric"
+                                                day="numeric" 
+                                                time-zone="UTC">                            
+                                            </lightning-formatted-date-time>
+                                        </p>
+                                </div>
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      Actual Finish
+                                    </label>
+                                    <p>
+                                        <lightning-formatted-date-time 
+                                            value={auditActualFinish} 
+                                            year="numeric"
+                                            month="numeric"
+                                            day="numeric" 
+                                            time-zone="UTC">                            
+                                        </lightning-formatted-date-time>
+                                    </p>
+                                </div>              
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      Closing Meeting
+                                    </label>
+                                    <p>
+                                        <lightning-formatted-date-time 
+                                            value={auditClosingMeeting} 
+                                            year="numeric"
+                                            month="numeric"
+                                            day="numeric" 
+                                            time-zone="UTC">                            
+                                        </lightning-formatted-date-time>
+                                    </p>
+                                </div>
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      Documents Reviewed
+                                    </label>
+                                    <p>
+                                        <lightning-formatted-text 
+                                            value={auditDocumentReviewed} >
+                                        </lightning-formatted-text> 
+                                    </p>
+                                </div>
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                    Stakeholders Interviewed
+                                </label>
+                                <p>
+                                    <lightning-formatted-text 
+                                        value={auditStakehInterview} >
+                                    </lightning-formatted-text> 
+                                </p>
+                                </div>
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      Items Observed
+                                    </label>
+                                    <p>
+                                        <lightning-formatted-text 
+                                            value={auditItemsObserved} >
+                                        </lightning-formatted-text> 
+                                    </p>
+                                </div>
+                            </div>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section class="bg-accordion" name="E" label="Review, Report, & Approval">
+                            <div class="slds-p-vertical_large slds-p-horizontal_small">
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      Audit Report Due Date
+                                    </label>
+                                    <p>
+                                    <lightning-formatted-date-time 
+                                    value={auditReportDueDate} 
+                                    year="numeric"
+                                    month="numeric"
+                                    day="numeric" 
+                                    time-zone="UTC">                            
+                                </lightning-formatted-date-time>
+                                </p>
+                                </div>
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      Audit Report Approved Date</label>
+                                    <p>
+                                        <lightning-formatted-date-time 
+                                        value={auditReportApprovedDate} 
+                                        year="numeric"
+                                        month="numeric"
+                                        day="numeric" 
+                                        time-zone="UTC">                            
+                                    </lightning-formatted-date-time>                   
+                                    </p>
+                                </div>              
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      Audit Report Distributed Date</label>
+                                    <p>
+                                        <lightning-formatted-date-time 
+                                        value={auditReportDistributDate} 
+                                        year="numeric"
+                                        month="numeric"
+                                        day="numeric" 
+                                        time-zone="UTC">                            
+                                    </lightning-formatted-date-time>                       
+                                </p>
+                                </div>
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      CAPA Report Due Date
+                                    </label>
+                                    <p>
+                                      <lightning-formatted-date-time 
+                                      value={auditCAPAReportDueDate} 
+                                      year="numeric"
+                                      month="numeric"
+                                      day="numeric" 
+                                      time-zone="UTC">                            
+                                  </lightning-formatted-date-time>  
+                                  </p>  
+                                </div>
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      CAPA Report Received Date
+                                    </label>
+                                    <p>
+                                      <lightning-formatted-date-time 
+                                      value={auditCAPAReportReceivedDate} 
+                                      year="numeric"
+                                      month="numeric"
+                                      day="numeric" 
+                                      time-zone="UTC">                            
+                                  </lightning-formatted-date-time>
+                                  </p> 
+                                </div>
+                                <div class="slds-form-element static-text">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      CAPA Report Approved Date
+                                    </label>
+                                    <p>
+                                    <lightning-formatted-date-time 
+                                      value={auditCAPAReportApprovedDate} 
+                                      year="numeric"
+                                      month="numeric"
+                                      day="numeric" 
+                                      time-zone="UTC">                            
+                                  </lightning-formatted-date-time> 
+                                  </p>
+                                </div>
+                            </div>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section class="bg-accordion" name="F" label="Results">
+                            <div class="slds-p-vertical_large slds-p-horizontal_small">
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  Audit Result
+                                </label>
+                                <p>
+                                    <lightning-formatted-text 
+                                        value={auditResult} >
+                                    </lightning-formatted-text> 
+                                </p>
+                            </div>
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  Audit Summary
+                                </label>
+                                <p>
+                                    <lightning-formatted-text 
+                                        value={auditSummary} >
+                                    </lightning-formatted-text> 
+                                </p>
+                            </div>
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  Risk Score</label>
+                                  <p>
+                                    <lightning-formatted-text 
+                                        value={auditRiscScope} >
+                                    </lightning-formatted-text> 
+                                </p>
+                            </div>
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  Recommendations
+                                </label>
+                                <p>
+                                    <lightning-formatted-text 
+                                        value={auditRecommendation} >
+                                    </lightning-formatted-text> 
+                                </p>
+                            </div>
+                            </div>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section class="bg-accordion" name="G" label="System Information ">
+                            <div class="slds-p-vertical_large slds-p-horizontal_small">
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  Created By
+                                </label>
+                                <p> 
+                                <lightning-formatted-text 
+                                    value={auditCreatedByName} >
+                                </lightning-formatted-text> 
+                                    <lightning-formatted-date-time 
+                                      value={auditCreatedDate} 
+                                      year="numeric"
+                                      month="numeric"
+                                      day="numeric"
+                                      hour="2-digit"
+                                      minute="2-digit" 
+                                      time-zone="UTC">                            
+                                  </lightning-formatted-date-time> 
+                                  </p>
+                               
+                            </div>
+                            <div class="slds-form-element static-text">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                Last Modified By
+                            </label>
+                            <p> 
+                                <lightning-formatted-text 
+                                    value={auditModifiedByName} >
+                                </lightning-formatted-text> 
+                                    <lightning-formatted-date-time 
+                                      value={auditModifiedDate} 
+                                      year="numeric"
+                                      month="numeric"
+                                      day="numeric"
+                                      hour="2-digit"
+                                      minute="2-digit" 
+                                      time-zone="UTC">                            
+                                  </lightning-formatted-date-time> 
+                                  </p>
+                            </div>
+                            </div>
+                        </lightning-accordion-section>
+                </lightning-accordion>
+                </lightning-record-edit-form>
+            </div>  
+            </div>
+          </div>
+        <div class="slds-col slds-order_2 slds-large-size_8-of-12 
+        slds-max-small-size_12-of-12 slds-small-size_12-of-12 
+        slds-size_8-of-12 slds-medium-size_12-of-12 slds-max-medium-size_12-of-12
+        slds-size_8-of-12">
+        <div class="bg-accordion slds-m-bottom_medium">
+            <c-record-related-list
+                record-id={recordId}                    
+                object-api-name='AuditProduct__c'>
+            </c-record-related-list>
+        </div>
+        <div class="bg-accordion slds-m-bottom_medium">
+            <c-record-related-list-audit-rules
+                record-id={recordId}
+                object-api-name='AuditRule__c'>
+            </c-record-related-list-audit-rules>              
+        </div>
+        <div class="bg-accordion slds-m-bottom_medium"> 
+            <c-record-related-list-risk-assessments
+                record-id={recordId}
+                object-api-name='RiskAssessment__c'
+            >
+            </c-record-related-list-risk-assessments>
+        </div>
+            <div class="bg-accordion slds-m-bottom_medium"> 
+                <c-record-related-list-pre-audit
+                record-id={recordId}
+                object-api-name='PreAuditQuestionnaire__c'
+                >
+                </c-record-related-list-pre-audit>
+             
+            </div>
+            <div class="bg-accordion slds-m-bottom_medium">
+                <c-record-related-list-audit-activities
+                record-id={recordId}
+                object-api-name='AuditActivity__c'>
+                </c-record-related-list-audit-activities>
+              
+            </div>
+            <div class="bg-accordion slds-m-bottom_medium"> 
+                <c-record-related-list-audit-resources
+                    record-id={recordId}
+                    object-api-name='AuditResource__c'
+                >
+                </c-record-related-list-audit-resources>
+         
+            </div>
+            <div class="bg-accordion slds-m-bottom_medium"> 
+                <c-record-related-list-activity-resources
+                record-id={recordId}
+                object-api-name='AuditActivityResource__c'>
+                </c-record-related-list-activity-resources>
+            </div>
+            <div class="bg-accordion slds-m-bottom_medium"> 
+                <c-record-related-list-audit-findings
+                    record-id={recordId}
+                    object-api-name='AuditFinding__c'
+                >
+                </c-record-related-list-audit-findings>
+                <!--<c-record-list
+                    record-id={recordId}
+                    object-api-name='AuditFinding__c'>
+                </c-record-list>-->
+            </div>
+           
+            <div class="bg-accordion slds-m-bottom_medium"> 
+              <c-record-related-audit-files
+              record-id={recordId}
+              object-api-name='ContentVersion'>
+
+              </c-record-related-audit-files>
+               
+            </div>
+    </div>
+    </div>
+</template>

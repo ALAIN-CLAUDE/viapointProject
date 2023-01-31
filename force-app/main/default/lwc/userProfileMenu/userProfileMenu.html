@@ -1,0 +1,11 @@
+<template>
+    <div class="menu-container">
+        <div class="dropdown-content">
+            <template for:each={userMenuItems} for:item="item">
+                <a key={item.Id} href={item.target} class="dropbtn">{item.label}</a>
+            </template>
+        </div>
+    </div>                 
+  
+    
+</template>

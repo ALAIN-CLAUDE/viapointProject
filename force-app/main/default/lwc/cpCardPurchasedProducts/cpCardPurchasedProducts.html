@@ -1,0 +1,81 @@
+<template>
+<div class="container slds-m-bottom_medium"> 
+    <div class="slds-p-around_x-small slds-page-header__title slds-truncate header-section">
+        <a href={urlProducts}>Purchased Products</a>
+    </div>   
+    <div class="slds-grid slds-wrap">
+    <template for:each={productData} for:item="product">           
+        <div key={productData.Id} class="slds-col slds-box_x-small            
+        slds-large-size_1-of-2 
+        slds-max-small-size_2-of-2 slds-small-size_2-of-2 
+        slds-size_1-of-2 slds-medium-size_2-of-2  
+        slds-max-medium-size_2-of-2">
+        <div class="product-card">
+            <div class="imageBlock" style={product.imageLogoCss}>
+                <div>
+                    <img src={product.Product2.ProductCardImage__c}  style="width:300px;height:130px;"/>
+                </div>
+
+            </div> 
+        <div class={product.unitClass}>      
+            <div class="slds-p-top_xx-medium slds-clearfix slds-p-around_x-small">
+                <div class="slds-box_x-small slds-text-body_small text-gray">
+                    <p class="slds-float_left">Status</p>
+                    <p class="slds-float_right">Family</p>
+                        
+                </div>
+                <div class="slds-box_x-small">
+                    <p class="slds-float_left text-bold">{product.Order_Status__c}</p> 
+                    <p class=" slds-float_right text-bold">{product.Product2.Family}</p>
+                </div>
+            </div>
+            <div class="slds-align_absolute-center text-bold">
+            <c-record-link
+                object-api-name={objectApiName}
+                record-id={product.OrderId}
+                label={product.Product_Name__c}>
+            </c-record-link>       
+            </div>
+            <div class="slds-align_absolute-center">
+                <p class="text-bold">
+                    {product.Order_Number__c}
+                </p> 
+            </div>
+            <div class="slds-box_xxx-small slds-icon slds-icon_x-small slds-align_absolute-center slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"> 
+               <c-cp-edit-menu item={product}></c-cp-edit-menu>    
+            </div>
+            <div class="slds-p-bottom_x-small">
+            <div class="slds-clearfix slds-p-horizontal_x-small">
+                <div class="slds-box_x-small slds-text-body_small text-gray">
+                    <p class="slds-float_left">Start</p>
+                    <p class="slds-float_right">Finish</p>                      
+                </div>
+                <div class="slds-box_x-small slds-text-body_small">
+                <p class="slds-float_left">
+                    <lightning-formatted-date-time 
+                        value={product.ServiceDate} 
+                        year="numeric"
+                        month="numeric"
+                        day="numeric" 
+                        time-zone="UTC">                            
+                    </lightning-formatted-date-time>
+                </p>
+                <p class="slds-float_right">
+                    <lightning-formatted-date-time 
+                        value={product.EndDate}  
+                        year="numeric"
+                        month="numeric"
+                        day="numeric" 
+                        time-zone="UTC">                            
+                    </lightning-formatted-date-time>
+                </p>                      
+                </div>
+            </div> 
+            </div>                              
+        </div> 
+        </div>  
+        </div>
+    </template>
+    </div>
+</div> 
+</template>

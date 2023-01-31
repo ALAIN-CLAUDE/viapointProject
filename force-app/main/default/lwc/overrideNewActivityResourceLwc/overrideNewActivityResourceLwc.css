@@ -1,0 +1,31 @@
+.align-with-title {
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+}
+.padder{
+  margin: 0;
+  position: relative;
+  bottom: 17px;
+
+}
+.padder1{
+  position: relative;
+  bottom: 4px;
+}
+
+.cssClass{
+  border-radius: 50%;
+}
+
+.moveright{
+  position: relative;
+  padding-left: 28rem;
+  bottom: 42px;
+  width: 100%;
+  flex-basis: 100%;
+
+}
+.moveIt{
+  position: relative;
+  bottom: 10px;
+}

@@ -1,0 +1,125 @@
+<template>
+    <div class="bg-footer slds-p-vertical_large">
+    <div class="slds-grid slds-wrap container-footer">
+        <div class="slds-size_1-of-4
+            slds-large-size_1-of-4 
+            slds-max-small-size_4-of-4 slds-small-size_4-of-4 
+            slds-medium-size_2-of-4 
+            slds-max-medium-size_2-of-4">
+            <div class="slds-box_x-small slds-m-around_x-small">
+                <div class="footer-style-1 slds-text-color_inverse">                   
+                    <h3>About Us</h3>                    
+                </div>
+                <div class="logoContainer slds-p-vertical_medium"> 
+                    <img src={logoImage}>
+                </div>
+                <div style="color:white;">Strategic direction to help customers reach digital destinations.</div>
+            </div>
+
+        </div>
+        <div class="slds-size_1-of-4
+            slds-large-size_1-of-4 
+            slds-max-small-size_4-of-4 slds-small-size_4-of-4 
+            slds-medium-size_2-of-4 
+            slds-max-medium-size_2-of-4">
+            <div class="slds-box_x-small slds-m-around_x-small">
+                <div class="footer-style-1 slds-text-color_inverse">
+                   <h3>Quick Links</h3>
+                   <ul class="footer-style-1-contact-info">
+                    <li class="slds-p-bottom_small"> 
+                        <a href={urlHome} style="color:white;">Home</a>
+                    </li>
+                    <li class="slds-p-bottom_small">
+                        <a href={urlOrganization} value="Organization__c" onclick={navigatePage} style="color:white;">Organization</a>
+                    </li>
+                    <li class="slds-p-bottom_small"> 
+                        <a href={urlProducts} style="color:white;">Products</a> 
+                    </li>
+                    <li class="slds-p-bottom_small">
+                        <a href={urlAssesments} style="color:white;">Assessments</a>
+                    </li>
+                    <li class="slds-p-bottom_small">
+                        <a href={urlSupport} style="color:white;">Support</a>
+                     </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slds-size_1-of-4
+        slds-large-size_1-of-4 
+        slds-max-small-size_4-of-4 slds-small-size_4-of-4 
+        slds-medium-size_2-of-4 
+        slds-max-medium-size_2-of-4">
+        <div class="slds-box_x-small slds-m-around_x-small">
+            <div class="footer-style-1 slds-text-color_inverse">
+                <h3>USA</h3>
+            </div>
+            <ul class="footer-style-1-contact-info">
+                <li class="slds-p-bottom_medium">ViaPoint LLC</li>
+                <li>
+                <svg style="fill:white;" class="slds-icon slds-icon_small slds-text-icon-inverse  slds-p-right_xx-small" aria-hidden="true">
+                    <use xlink:href="/_slds/icons/standard-sprite/svg/symbols.svg#email"></use>
+                </svg>
+                    
+                    <span>info@viapoint.co</span>
+                </li>
+                <li> <svg class="slds-icon slds-icon_small slds-icon-text-default slds-p-right_xx-small" style="fill: white;" aria-hidden="true">
+                    <use xlink:href="/_slds/icons/standard-sprite/svg/symbols.svg#call"></use>
+                </svg><span>+1 561 510 3770</span></li>
+                <li>
+                    <svg style="fill: white;" aria-hidden="true" class="slds-icon slds-icon_small slds-p-right_xx-small">
+                        <use xlink:href="/_slds/icons/standard-sprite/svg/symbols.svg#address"></use>
+                    </svg>
+                    <span>2000 Salzedo St<br>
+                    <svg aria-hidden="true" class="slds-icon slds-icon slds-icon_small slds-p-right_xx-small">                       
+                    </svg>Suite 1102<br>
+                    <svg aria-hidden="true" class="slds-icon slds-icon slds-icon_small slds-p-right_xx-small">                      
+                    </svg>Coral Gables, FL 33134<br>
+                    <svg aria-hidden="true" class="slds-icon slds-icon slds-icon_small slds-p-right_xx-small">                       
+                    </svg>USA</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="slds-size_1-of-4
+    slds-large-size_1-of-4 
+    slds-max-small-size_4-of-4 slds-small-size_4-of-4 
+    slds-medium-size_2-of-4 
+    slds-max-medium-size_2-of-4">
+    <div class="slds-box_x-small slds-m-around_x-small">
+        <div class="footer-style-1 slds-text-color_inverse">
+            <h3>Australia</h3>
+            <ul class="footer-style-1-contact-info">
+                <li class="slds-p-bottom_medium">ViaPoint Ltd</li>
+                <li>
+                <svg style="fill: white;" class="slds-icon slds-icon_small slds-p-right_xx-small" aria-hidden="true">
+                    <use xlink:href="/_slds/icons/standard-sprite/svg/symbols.svg#email"></use>
+                </svg>                    
+                    <span>info@viapoint.co</span>
+                </li>
+                <li> <svg style="fill: white;" class="slds-icon slds-icon_small slds-p-right_xx-small" aria-hidden="true">
+                    <use xlink:href="/_slds/icons/standard-sprite/svg/symbols.svg#call"></use>
+                </svg><span>+61 434 275 608</span></li>
+                <li>
+                    <svg style="fill: white;" aria-hidden="true" class="slds-icon slds-icon slds-icon_small slds-p-right_xx-small">
+                        <use xlink:href="/_slds/icons/standard-sprite/svg/symbols.svg#address"></use>
+                    </svg>
+                    <span>Level 35, Tower One<br>
+                    <svg aria-hidden="true" class="slds-icon slds-icon slds-icon_small slds-p-right_xx-small">                       
+                    </svg>100 Barangaroo Ave<br>
+                    <svg aria-hidden="true" class="slds-icon slds-icon slds-icon_small slds-p-right_xx-small">                      
+                    </svg>Sydney, NSW 2000</span><br>
+                    <svg aria-hidden="true" class="slds-icon slds-icon slds-icon_small slds-p-right_xx-small">                      
+                    </svg> Australia
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+<div  class="bg-copyright-footer slds-p-vertical_large slds-text-align_center">
+    <div class="slds-grid slds-wrap container-copyright-footer slds-text-align_center slds-text-color_inverse">
+        <div class="slds-size_1-of-1 slds-text-align_center">Copyright © 2022 ViaPoint LLC. All Rights Reserved.</div>
+    </div>
+</div> 
+</template>

@@ -1,0 +1,93 @@
+<template>
+    <div class="container slds-m-bottom_medium">
+        <div class="slds-page-header__title slds-p-around_x-small slds-truncate">
+            <a href={urlAuditActivitiesResources}>Audit Activity Resources</a>
+        </div>
+    <div class="slds-grid slds-wrap" >
+        <template for:each={data} for:item="income">           
+            <div key={income.recordId} class="slds-col slds-box_x-small            
+            slds-large-size_1-of-2 
+            slds-max-small-size_2-of-2 slds-small-size_2-of-2 
+            slds-size_1-of-2 slds-medium-size_2-of-2  
+            slds-max-medium-size_2-of-2"
+            >
+        <div class={income.unitClass}> 
+            <div class="slds-p-top_xx-medium slds-clearfix slds-p-around_x-small">
+                <div class="slds-box_x-small slds-text-body_small text-gray">
+                    <p class="slds-float_left">Status</p>
+                    <p class="slds-float_right">FTE</p>
+                      
+                </div>
+                <div class="slds-box_x-small">
+                    <p class="slds-float_left text-bold">{income.status}</p> 
+                   <p class=" slds-float_right text-bold">{income.requestAllocationFte}</p>
+                </div>
+            </div>                     
+      
+        
+        
+        <div class="slds-align_absolute-center text-bold">
+        <c-record-link
+            object-api-name={objectApiName}
+            record-id={income.recordId}
+            label={income.auditResourseTitleId}>
+        </c-record-link>                   
+        </div>
+        <div class="slds-align_absolute-center">
+            <p class="text-bold">
+                {income.name}
+            </p> 
+        </div>        
+        <div class="slds-box_xxx-small slds-icon slds-icon_x-small slds-align_absolute-center slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"> 
+            <c-cp-edit-menu item={income}></c-cp-edit-menu>  
+          <!--            
+            <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+                <a class="" data-target-id={income.menuId} onclick={showMenu}
+                    aria-haspopup="true" 
+                    aria-expanded="true"                   
+                    title="Show More">
+                    <svg class="slds-button__icon" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Show More</span>
+                </a>
+                <div class="slds-dropdown slds-dropdown_left slds-hide" data-id={income.menuId}>
+                <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
+                    <li class="slds-dropdown__item" role="presentation">
+                        <a href="#" role="menuitem"  tabindex="0">
+                        <span class="slds-truncate" title="Edit">
+                        <svg class="slds-icon slds-icon_x-small slds-icon-text-default slds-m-right_x-small" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"></use>
+                        </svg>Edit</span>
+                        </a>
+                    </li>
+                    <li class="slds-dropdown__item" role="presentation">
+                        <a href="#" role="menuitem" tabindex="-1">
+                        <span class="slds-truncate" title="Delete">
+                        <svg class="slds-icon slds-icon_x-small slds-icon-text-default slds-m-right_x-small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
+                        </svg>Delete</span>
+                        </a>
+                    </li>       
+                </ul>
+                </div>
+            </div>  -->                  
+        </div>
+        <div class="slds-p-bottom_x-small">           
+            <div class="slds-clearfix slds-p-horizontal_x-small">
+                <div class="slds-box_x-small slds-text-body_small text-gray">
+                    <p class="slds-float_left">Start</p>
+                    <p class="slds-float_right">Finish</p>                        
+                </div>
+                <div class="slds-box_x-small">
+                    <p class="slds-float_left text-bold">{income.startdate}</p> 
+                    <p class=" slds-float_right text-bold">{income.finishdate}</p>
+                </div>
+            </div>
+        </div>                              
+    </div>   
+    </div>
+        </template>
+    </div>
+</div>  
+</template>

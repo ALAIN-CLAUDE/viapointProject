@@ -1,0 +1,23 @@
+.slds-grid .slds-hyphenate {
+    width: 80%
+}
+
+.slds-grid .slds-truncate {
+    width: 80%
+}
+
+.picklist-container{
+    margin-top: -1rem;
+    margin-left: -0.5rem;
+    position: absolute !important;
+}
+
+.picklist-container .slds-dropdown{
+    position: fixed !important;
+    max-height: 120px;
+     margin-top: -1rem;
+     width: 200px;
+    margin-left: -0.5rem;
+    max-width: fit-content;
+    overflow: auto;
+}

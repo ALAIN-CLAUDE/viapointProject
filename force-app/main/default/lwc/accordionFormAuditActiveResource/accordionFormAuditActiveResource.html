@@ -1,0 +1,199 @@
+<template>
+    <div class="container">
+        <div class="slds-var-m-around_medium">
+            <lightning-record-edit-form
+                object-api-name={objectApiName}
+                record-id={recordId}>
+            <lightning-messages></lightning-messages>
+            <lightning-accordion
+                allow-multiple-sections-open
+                active-section-name={activeSections} class="accordionClass">
+                <lightning-accordion-section class="bg-accordion accordionClass" name="A" label="General">
+                    <div class="slds-p-vertical_large slds-p-horizontal_small bg-accordion">
+                    <div class="slds-form-element static-text">
+                        <label class="slds-p-bottom_x-small text-gray  " for="text-input-id-47">
+                            Audit Number
+                        </label>
+                        <p>
+                        <lightning-formatted-url 
+                            value={auditNumberURL}
+                            label={auditNumber}>
+                        </lightning-formatted-url>                          
+                        </p>
+                    </div>                    
+                    <div class="slds-form-element">
+                        <label class="slds-p-bottom_x-small text-gray  " for="text-input-id-47">
+                            Audit Title
+                        </label>
+                        <p>
+                        <lightning-formatted-url 
+                            value={auditNumberURL}
+                            label={auditTitle}>
+                        </lightning-formatted-url> 
+                            
+                        </p>
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-p-bottom_x-small text-gray" for="text-input-id-47">
+                            Audit Activity Number
+                        </label>
+                        <p>
+                        <lightning-formatted-url 
+                            value={auditActivityNumberURL}
+                            label={auditActivityNumber}>
+                        </lightning-formatted-url>                          
+                        </p>             
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-p-bottom_x-small text-gray">
+                            Audit Activity Title
+                        </label>         
+                        <p>
+                        <lightning-formatted-url 
+                            value={auditActivityNumberURL}
+                            label={auditActivityTitle}>
+                        </lightning-formatted-url>
+                        </p>  
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-p-bottom_x-small text-gray">
+                            Resource Number
+                        </label> 
+                        <p>
+                        <lightning-formatted-url 
+                            value={auditResourceNumberURL}
+                            label={activityResourceNumber}>
+                        </lightning-formatted-url>
+                        </p>                     
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-p-bottom_x-small text-gray">
+                            Resource Title
+                        </label>         
+                        <p>
+                            <lightning-formatted-url 
+                                value={auditResourceNumberURL}
+                                label={auditResourceTitle}>
+                            </lightning-formatted-url>                             
+                        </p>  
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-p-bottom_x-small text-gray">
+                            Audit Activity Resource Number
+                        </label>         
+                        <p>
+                            <lightning-formatted-text 
+                                value={resourceNumber} >
+                            </lightning-formatted-text> 
+                        </p>  
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-p-bottom_x-small text-gray" for="text-input-id-45">                                  
+                            Request Allocation Method
+                        </label>                                
+                        <p>
+                            <lightning-formatted-text 
+                                value={requestAllocationMethod} >
+                            </lightning-formatted-text> 
+                        </p>  
+                    </div>                
+                    <div class="slds-form-element">
+                        <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                            Request Allocation Units
+                        </label>                        
+                        <p>
+                            <lightning-formatted-number 
+                                value={requestAllocationUnits}>
+                            </lightning-formatted-number>
+                        </p>
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                            Request Allocation FTE
+                        </label>
+                        <p>
+                            <lightning-formatted-number 
+                                value={requestAllocationFTE}>
+                            </lightning-formatted-number>                          
+                        </p>                   
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                            Request Allocation Hours
+                        </label>     
+                        <p>
+                            <lightning-formatted-number 
+                                value={requestAllocationHours}>
+                            </lightning-formatted-number>  
+                        </p>              
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                            Request Description
+                        </label>                         
+                        <p>
+                            <lightning-formatted-text
+                                value={requestDescription} >
+                            </lightning-formatted-text>
+                        </p>  
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="text-gray slds-p-bottom_x-small" for="text-input-id-47">
+                            Status
+                        </label>      
+                        <p>
+                            <lightning-formatted-text
+                                value={auditActivityStatus} >
+                            </lightning-formatted-text>
+                        </p>  
+                    </div>
+                    </div>
+                </lightning-accordion-section>
+                <lightning-accordion-section class="bg-accordion" name="B" label="System Information ">
+                    <div class="slds-p-vertical_large slds-p-horizontal_small">
+                        <div class="slds-form-element static-text">
+                            <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                              Created By
+                            </label>
+                            <p> 
+                            <lightning-formatted-text 
+                                value={auditCreatedByName} >
+                            </lightning-formatted-text> 
+                                <lightning-formatted-date-time 
+                                  value={auditCreatedDate} 
+                                  year="numeric"
+                                  month="numeric"
+                                  day="numeric"
+                                  hour="2-digit"
+                                  minute="2-digit" 
+                                  time-zone="UTC">                            
+                              </lightning-formatted-date-time> 
+                              </p>
+                           
+                        </div>
+                        <div class="slds-form-element static-text">
+                            <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                            Last Modified By
+                        </label>
+                        <p> 
+                            <lightning-formatted-text 
+                                value={auditModifiedByName} >
+                            </lightning-formatted-text> 
+                                <lightning-formatted-date-time 
+                                  value={auditModifiedDate} 
+                                  year="numeric"
+                                  month="numeric"
+                                  day="numeric"
+                                  hour="2-digit"
+                                  minute="2-digit" 
+                                  time-zone="UTC">                            
+                              </lightning-formatted-date-time> 
+                              </p>
+                        </div>
+                        </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+            </lightning-record-edit-form>
+        </div>  
+    </div>
+</template>

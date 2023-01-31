@@ -1,0 +1,12 @@
+.c-container {    
+  margin: 0;
+  min-height: calc(100vh - 250px); 
+}
+
+article.slds-card {
+  height: 100%;
+}
+
+.full-height {
+  height: 100%;
+}

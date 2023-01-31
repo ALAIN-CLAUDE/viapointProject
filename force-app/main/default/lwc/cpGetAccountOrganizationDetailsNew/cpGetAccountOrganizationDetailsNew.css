@@ -1,0 +1,19 @@
+.container {
+    border-radius: 6px;
+    box-shadow: 10px 20px 40px 0 rgba(173, 181, 189, 0.1);
+    border: solid 1px rgba(129, 147, 174, 0.12);
+    /*background-color: #fff;*/
+    padding: 2% 1%; 
+    border-radius: 6px;
+    box-shadow: 10px 20px 40px 0 rgba(173, 181, 189, 0.1);
+    border: solid 1px rgba(129, 147, 174, 0.12);
+    background-color:rgb(250, 249, 248);
+    font-size: 10pt;
+}
+.text-gray {
+    color: hsl(234, 12%, 34%);
+}
+.text-bold {
+    font-weight: 600;
+    color: hsl(234, 12%, 34%);
+}

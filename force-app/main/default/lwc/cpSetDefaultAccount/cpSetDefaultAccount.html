@@ -1,0 +1,19 @@
+<template>
+    <template if:true={showOrgSelection}>
+        <div class="slds-form slds-clearfix .slds-is-static">
+            <div class="slds-col slds-float_left slds-p-top_xx-small" > 
+             <label  class="slds-form-element__label slds-p-left_large">Organization:</label>
+            </div>
+            <div class="slds-form-element slds-form-element_horizontal slds-col  ">
+               
+          <lightning-combobox id="horizontal-input-id-01" class="slds-p-around_x-small"
+          name="Orgnisation"
+          label=""
+          value={selectedOrg}
+          placeholder="Select Orgnisation"
+          options={options}
+          onchange={handleChange} ></lightning-combobox>
+          </div>
+        </div>
+    </template>
+</template>

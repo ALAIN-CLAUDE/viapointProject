@@ -1,0 +1,17 @@
+.THIS .logoContainer {
+background-image: t('url(' + brandLogoImage  + ')');
+background-position: center;
+background-repeat: no-repeat;
+background-size: contain;
+z-index: 99;
+cursor: pointer;
+position: relative;
+max-width: 100%;
+max-height: 60px;
+display: block;
+outline: 0;
+height: 31px;
+margin-top: 10px;
+    margin-bottom: 5px;
+
+}

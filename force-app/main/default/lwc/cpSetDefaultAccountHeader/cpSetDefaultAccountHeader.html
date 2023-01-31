@@ -1,0 +1,13 @@
+<template>
+    <template if:true={showOrgSelection}>          
+        <lightning-combobox id="horizontal-input-id-01"
+            name="Orgnisation"
+            label=""
+            value={selectedOrg}
+            placeholder="Select Orgnisation"
+            options={options}
+            onchange={handleChange}            
+           >
+        </lightning-combobox>              
+    </template>
+</template>

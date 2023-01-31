@@ -1,0 +1,172 @@
+<template>
+  <div class="slds-card" >
+  
+      <!--this is header section--> 
+  
+  <div class="slds-card__header slds-grid">
+  <header class="slds-media slds-media_center slds-has-flexi-truncate">
+      <div class="slds-media__figure">
+      <lightning-icon icon-name="custom:custom84" size="small"></lightning-icon>           
+      </div>
+      <div class="slds-media__body">
+      <h2 class="slds-card__header-title">
+          <a href="#" class="slds-card__header-link slds-truncate" title="Locations">
+          <span>Locations</span>
+          </a>
+      </h2>
+      </div>
+      <div class="slds-no-flex">
+      <button class="slds-button slds-button_neutral" onclick={handleNewButton}>New</button>
+      </div>
+  </header>
+  </div>
+  
+  <!--this is datatable section--> 
+  <div class="slds-m-around_medium" style="overflow: visible">
+  
+  <template if:true={locObj}>
+  <lightning-datatable key-field="Id" 
+  data={locObj} 
+  columns={columns} 
+  onsave={saveHandleAction}
+  draft-values={fldsItemValues} 
+  class="slds-max-medium-table_stacked"
+  hide-checkbox-column 
+  show-row-number-column>
+  </lightning-datatable>
+  </template>
+  
+  </div>
+  
+  <!--this is Datatable section ends here--> 
+  </div> 
+  
+              <!--this is modal inside the New button section starts here-->   
+              <template if:true={isModalOpen}>          
+                  <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+                   <div class="slds-modal__container">
+                     <header class="slds-modal__header">
+                       <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                             
+                         <lightning-icon icon-name="utility:close"
+                         alternative-text="close"
+                         variant="inverse"
+                         size="small" ></lightning-icon>
+                         <span class="slds-assistive-text">Close</span>
+                       </button>  
+                     <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">New Location</h2>
+                     </header>
+                     <div class="slds-modal__content slds-p-around_small" id="modal-content-id-1">
+                       <lightning-card>
+                       <template if:true={loaded}>
+                         <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+                     </template>
+                     <h3   class="test-id__section-header-container padder slds-section__title slds-theme--shade">
+                      <span  class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate"></span>
+                      </h3>
+                       
+                   <!-- <div class="slds-var-p-around_small">  -->
+                       <div class="align-with-title">
+
+                          <div class="slds-form  slds-form-element_readonly ">
+                              <span class="slds-form-element__label">
+                                <abbr class="slds-required" title="required">* </abbr>
+                                      Account Name</span>
+          
+                                      <div class="slds-card__header slds-grid">
+                                          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                            <div class="slds-media__figure" >
+                                              <span class="slds-icon_container slds-icon-standard-account" title="account">
+                                                
+                                                      <lightning-icon icon-name="standard:account"  size="small"></lightning-icon>
+                                               
+                                                <span class="slds-assistive-text">Account Name</span>
+                                              </span>
+                                            </div>
+                                            <div class="slds-media__body">
+                                              <h3
+                                              class="slds-card__header-title">
+                                                <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+                                                  <span> {AccountName}</span>
+                                                </a>
+                                              </h3>
+                                            </div>
+                                          </header>
+                                        </div>
+                          </div>
+              
+
+               <br>
+
+                           <lightning-input
+                             class="validate"
+                             label="Location Name"
+                             name="Location Name"
+                             required
+                             type="text"
+                             value={LocationNameValue}
+                             onchange={locationhandleChange}
+                           ></lightning-input>
+          
+                 <br>
+                         <lightning-combobox
+                         class="validate"
+                         name="Location Type"
+                         dropdown-alignment="auto"
+                         label="Location Type"
+                         required="true"
+                         value={locationTypeValue}
+                         placeholder="Select Location Type"
+                         options={LocationTypeOptions}
+                         onchange={locationhandleChange} >
+                       </lightning-combobox>
+          
+          <br>
+                         <lightning-combobox
+                         class="validate"
+                         name="Time Zone"
+                         dropdown-alignment="auto"
+                         label="Time Zone"
+                         required="true"
+                         value={TimeZoneValue}
+                         placeholder="Select Time Zone"
+                         options={TimezoneOptions}
+                         onchange={locationhandleChange} >
+                       </lightning-combobox>  
+                    
+                       </div>
+                     </lightning-card>
+                     </div>
+                   
+                     <footer class="slds-modal__footer">
+                               
+                     <div class="slds-align_absolute-center slds-border_leftslds-border_left" style="height: 2.5rem">
+                       <div class="slds-clearfix slds-border_leftslds-border_left" style="margin-right:5px">
+                       <div class="slds-float_left">
+                         <lightning-button  variant="neutral" label="Cancel" title="Cancel" onclick={closeModal}>Cancel</lightning-button>
+                       </div>
+                   </div>
+                   <div class="slds-clearfix slds-border_leftslds-border_left" >
+                       <div class="slds-align_absolute-center">
+                         <lightning-button label="Save &amp; New" variant="neutral" type="submit" onclick={handleSaveAndNew}> </lightning-button>
+                       </div>
+                   </div>
+                   <div class="slds-clearfix slds-border_leftslds-border_left" style="margin-left:5px">
+                       <div class="slds-float_right">
+                         <lightning-button label="Save" variant="brand" type="submit" onclick={handleSave}></lightning-button>
+                       </div>
+                   </div>
+                 </div>
+             
+                     </footer>
+                   </div>
+                 </section>
+                 <div class="slds-backdrop slds-backdrop_open"></div>
+             
+               </template>
+          
+              
+  
+  <!-- modal end -->
+  
+      </template>

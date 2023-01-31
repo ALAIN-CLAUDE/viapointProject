@@ -1,0 +1,23 @@
+<template>
+    <lightning-card>
+        <h1 slot="title">
+            <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+            Record Form
+        </h1>
+        <div slot="footer">
+                
+        </div>
+        <div>
+        <!-- fields={fields} -->
+        <lightning-record-form
+        record-id={recordId}
+        object-api-name={objectApiName}
+        layout-type="Full"
+        columns="1"
+        mode={modeName}
+        onsubmit={handleSubmit}
+        onsuccess={handleSuccess}>
+</lightning-record-form>
+    </div>
+    </lightning-card>
+</template>

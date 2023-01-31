@@ -1,0 +1,24 @@
+<template>
+    <lightning-accordion
+    allow-multiple-sections-open
+    active-section-name={activeSections}
+    class="accordionClass"
+    >
+    <div class="slds-p-around_small slds-m-top_x-small slds-float_right">
+        <button onclick={handleNew} class="slds-button slds-button_neutral newButton">New</button>
+    </div>
+    <lightning-accordion-section class="bg-accordion headertitle" name="A" label={labelAuditActivityResources}>
+      <div class="bg-accordion slds-m-bottom_medium">    
+            <lightning-datatable          
+                key-field="id"
+                data={records}
+                columns={columns}
+                sorted-by={sortBy}
+                onsort={handleSortData}
+                sorted-direction={sortDirection}
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </div>
+  </lightning-accordion-section>
+  </lightning-accordion>
+</template>

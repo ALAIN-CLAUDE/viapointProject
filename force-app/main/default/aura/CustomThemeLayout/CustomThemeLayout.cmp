@@ -1,0 +1,45 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="Sample Custom Theme Layout">
+    <aura:attribute name="search" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="newHeader" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="logo" type="Aura.Component[]" required="false"/>
+    <div  >
+        <div class="slds-grid slds-wrap slds-p-top_x-small slds-p-bottom_x-small" style="background-color:rgb(42, 56, 141)">
+            <div class="slds-col slds-size_2-of-12 "  >
+                <div class="logoContainer"  >
+                </div>
+            </div>
+            <div class="slds-col slds-size_6-of-12 ">
+                <div class="searchRegion">
+                    {!v.search}
+                </div>
+            </div>
+             <div class="slds-col slds-size_3-of-12 slds-m-top_x-small ">
+               <c:cpSetDefaultAccount></c:cpSetDefaultAccount>
+            </div>
+            <div class="slds-col slds-size_1-of-12 slds-m-top_x-small ">
+                <div class="profileMenuRegion themeUtil themeProfileMenu">
+                    {!v.profileMenu}
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="slds-grid slds-wrap"  style="background-color:rgb(0, 15, 89)">
+          
+            <div class="slds-col slds-size_11-of-12 slds-p-left_large">
+                
+                <div class="navigation slds-p-left_large ">
+                    {!v.navBar}
+                </div>
+            </div>
+        </div>
+         <div class="newHeader">
+        {!v.newHeader}
+    </div>
+    <div class="mainContentArea" >
+        {!v.body}
+    </div>
+    </div>
+</aura:component>

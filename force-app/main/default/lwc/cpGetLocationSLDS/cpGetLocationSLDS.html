@@ -1,0 +1,50 @@
+<template>
+  <table class="slds-table slds-table_bordered slds-table_edit  slds-table_resizable-cols slds-table_cell-buffer" role="grid" style="" aria-label="Example inline edit table in navigation mode with cell focused">
+    <thead>
+    <tr class="slds-line-height_reset">
+    <th scope="col">
+    <div class="slds-truncate" title="Location">Location</div>
+    </th>
+    <th scope="col">
+    <div class="slds-truncate" title="Type">Type</div>
+    </th>
+    <th scope="col">
+    <div class="slds-truncate" title="Timezone">Timezone</div>
+    </th>
+    </tr>
+    </thead>
+    <tbody>
+   <!--
+      <template iterator:it={records}>
+
+    <tr key = {it.value.Id}  >
+    <th scope="row" data-label="First Name">
+    <div class="slds-truncate" title="Location">{it.value.Name}</div>
+    </th>
+    <td data-label="Type">
+    <div class="slds-truncate" title="Type">{it.value.LocationType__c}  </div>
+    </td>
+    <td data-label="Timezone">
+    <div class="slds-truncate" title="Timezone">{it.value.TimeZone__c}           </div>
+    </td>
+    </tr>
+   
+  </template>
+--> 
+<template iterator:it={records}>
+  <tr class="slds-hint-parent" key = {it.value.Id}  >
+      <td data-label="Location">
+          <div class="slds-cell-wrap">{it.value.Name}</div>
+      </td>
+      <td data-label="Type">
+          <div class="slds-cell-wrap">{it.value.LocationType__c}</div>
+      </td>
+      <td data-label="Timezone">
+          <div class="slds-cell-wrap">{it.value.TimeZone__c}</div>
+      </td>
+  </tr>
+</template>
+
+    </tbody>
+    </table>
+</template>

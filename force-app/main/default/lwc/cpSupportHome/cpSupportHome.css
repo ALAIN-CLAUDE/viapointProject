@@ -1,0 +1,39 @@
+.container {
+    border-radius: 6px;
+    box-shadow: 10px 20px 40px 0 rgba(173, 181, 189, 0.1);
+    border: solid 1px rgba(129, 147, 174, 0.12);
+    background-color: #fff;   
+    padding: 2% 1%;
+    background-color:rgb(250, 249, 248);  
+    /*margin-bottom: 4px;*/
+}
+.card-box {
+    /*font-family: 'Poppins', sans-serif;*/
+    font-size: 10pt;
+    border-radius: 5px 5px;
+    border: 1px solid #c9c9c9;
+    background-color: #fff;
+}
+.text-gray {
+    color: hsl(234, 12%, 34%);
+}
+.text-bold {
+    font-weight: 600;
+    color: hsl(234, 12%, 34%);
+}
+.new {
+    border-top: 5px solid #f7ca18;
+}
+.open {
+    border-top: 5px solid #f7ca18;
+}
+.pending {
+    border-top: 5px solid #f89406;
+}
+.escalated {
+    border-top: 5px solid #f22613;
+}
+.closed {
+    border-top: 5px solid #3b3a39;
+    background-color: #edebe9;
+}

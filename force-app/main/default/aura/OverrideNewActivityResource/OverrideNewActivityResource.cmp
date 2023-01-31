@@ -1,0 +1,8 @@
+<aura:component implements="lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:attribute name="parentRecordId" type="String" />	
+    <aura:attribute name="isLoaded" type="boolean"  default="false"/>	
+    <aura:if isTrue="{!v.isLoaded}">
+    <c:overrideNewActivityResourceLwc onclosemodal="{!c.handleClose}" recordId="{!v.parentRecordId}"></c:overrideNewActivityResourceLwc>
+        </aura:if>
+</aura:component>

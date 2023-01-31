@@ -1,0 +1,480 @@
+<template>
+    <div class="slds-grid slds-gutters slds-wrap">
+        <div class="slds-col slds-order_1                     
+        slds-large-size_4-of-12 slds-max-small-size_12-of-12 slds-small-size_12-of-12 
+        slds-size_4-of-12 slds-medium-size_12-of-12 slds-max-medium-size_12-of-12
+        slds-size_4-of-12">
+            <div class="container">
+                <!--<c-cp-object-header object-api-name={objectApiName} record-id={recordId}></c-cp-object-header>-->
+                    <div class="slds-var-m-around_medium">
+                        <lightning-record-edit-form
+                            object-api-name={objectApiName}
+                            record-id={recordId}>
+                        <lightning-messages></lightning-messages>
+                        <lightning-accordion
+                        allow-multiple-sections-open
+                        active-section-name={activeSections}>
+                        <lightning-accordion-section class="bg-accordion" name="A" label="General">
+                            <div class="slds-p-vertical_large slds-p-horizontal_small bg-accordion">
+                            <div class="slds-form-element">
+                                <label class="text-gray slds-p-bottom_x-small" for="text-input-id-47">
+                                Status</label>
+                                <div class="">
+                                <lightning-input-field 
+                                class="text-bold slds-combobox slds-dropdown-trigger " 
+                                variant="label-hidden" 
+                                field-name="AuditWorkflowStatus__c">
+                                </lightning-input-field>
+                                </div>
+                            </div>
+                              <div class="slds-form-element">
+                                <label class="text-gray slds-p-bottom_x-small" for="text-input-id-47">
+                                Audit Title</label>
+                                <div class="">
+                                    <lightning-output-field 
+                                    class="text-bold" 
+                                    variant="label-hidden" 
+                                    field-name="AuditTitle__c">
+                                </lightning-output-field >                    
+                                </div>
+                              </div>
+                              <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray  " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Organization</label>
+                                <div class="">
+                                <lightning-output-field 
+                                    class="text-bold" 
+                                    
+                                    variant="label-hidden" 
+                                    field-name="Organization__c">
+                                </lightning-output-field>                   
+                                </div>
+                              </div>
+                              <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray  " for="text-input-id-47">
+                                Location</label>
+                                <div class="">
+                                <lightning-output-field 
+                                    class="text-bold"
+                                     
+                                    variant="label-hidden" 
+                                    field-name="Location__c">
+                                </lightning-output-field>                     
+                                </div>
+                              </div>
+                              <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray" for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Department</label>
+                                <div class="">
+                                <lightning-input-field 
+                                    class="text-bold" 
+                                    variant="label-hidden" 
+                                    field-name="AuditDepartment__c">
+                                </lightning-input-field>                    
+                                </div>
+                              </div>
+                              <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                Lead Auditor</label>
+                                <div class="">
+                                <lightning-input-field 
+                                    class="text-bold" 
+                                    variant="label-hidden" 
+                                    field-name="LeadAuditorInternal__c">
+                                </lightning-input-field>                    
+                                </div>
+                              </div>
+                            </div>
+                        </lightning-accordion-section>
+                
+                        <lightning-accordion-section class="bg-accordion" name="B" label="Planning">
+                            <div class="slds-p-vertical_large slds-p-horizontal_small">
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Earliest Start</label>
+                                <div class="">
+                                <lightning-input-field 
+                                    class="text-bold" 
+                                    
+                                    variant="label-hidden" 
+                                    field-name="EarliestStart__c">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Latest Start</label>
+                                <div class="">
+                                <lightning-input-field 
+                                
+                                    class="text-bold" 
+                                    variant="label-hidden" 
+                                    field-name="LatestStart__c">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>              
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Earliest Finish</label>
+                                <div class="">
+                                <lightning-input-field 
+                                
+                                    class="text-bold" 
+                                    variant="label-hidden" 
+                                    field-name="EarliestFinish__c">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Latest Finish</label>
+                                <div class="">
+                                <lightning-input-field
+                                    
+                                    class="text-bold" 
+                                    variant="label-hidden" 
+                                    field-name="LatestFinish__c">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Planned Start</label>
+                                <div class="">
+                                <lightning-input-field 
+                                    class="text-bold" 
+                                    variant="label-hidden" 
+                                    field-name="PlannedStart__c">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Planned Finish</label>
+                                <div class="">
+                                <lightning-input-field 
+                                    class="text-bold" 
+                                    variant="label-hidden" 
+                                    field-name="PlannedFinish__c">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>
+                            </div>
+                        </lightning-accordion-section>
+                
+                        <lightning-accordion-section class="bg-accordion" name="C" label="Execution">
+                            <div class="slds-p-vertical_large slds-p-horizontal_small">
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      <abbr class="slds-required"> </abbr>Actual Start</label>
+                                    <div class="">
+                                    <lightning-input-field 
+                                        class="text-bold" 
+                                        
+                                        variant="label-hidden" 
+                                        field-name="ActualStart__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      <abbr class="slds-required"> </abbr>Actual Finish</label>
+                                    <div class="">
+                                    <lightning-input-field 
+                                    
+                                        class="text-bold" 
+                                        variant="label-hidden" 
+                                        field-name="ActualFinish__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>              
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      <abbr class="slds-required"> </abbr>Closing Meeting</label>
+                                    <div class="">
+                                    <lightning-input-field 
+                                        
+                                        class="text-bold" 
+                                        variant="label-hidden" 
+                                        field-name="ClosingMeeting__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      <abbr class="slds-required"> </abbr>Documents Reviewed</label>
+                                    <div class="">
+                                    <lightning-input-field
+                                        
+                                        class="text-bold" 
+                                        variant="label-hidden" 
+                                        field-name="DocumentsReviewed__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                    Stakeholders Interviewed</label>
+                                    <div class="">
+                                    <lightning-input-field 
+                                        class="text-bold" 
+                                        
+                                        variant="label-hidden" 
+                                        field-name="StakeholdersInterviewed__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      <abbr class="slds-required"> </abbr>Items Observed</label>
+                                    <div class="">
+                                    <lightning-input-field 
+                                        class="text-bold" 
+                                        
+                                        variant="label-hidden" 
+                                        field-name="ItemsObserved__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>
+                                </div>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section class="bg-accordion" name="D" label="Review, Report, & Approval">
+                            <div class="slds-p-vertical_large slds-p-horizontal_small">
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      <abbr class="slds-required"> </abbr>Audit Report Due Date</label>
+                                    <div class="">
+                                    <lightning-input-field 
+                                        class="text-bold" 
+                                        
+                                        variant="label-hidden" 
+                                        field-name="AuditReportDueDate__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      <abbr class="slds-required"> </abbr>Audit Report Approved Date</label>
+                                    <div class="text-bold ">
+                                    <lightning-input-field 
+                                    
+                                        class="text-bold" 
+                                        variant="label-hidden" 
+                                        field-name="CapaReportApprovedDate__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>              
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      <abbr class="slds-required"> </abbr>Audit Report Distributed Date</label>
+                                    <div class="text-bold ">
+                                    <lightning-input-field 
+                                    
+                                        class="text-bold" 
+                                        variant="label-hidden" 
+                                        field-name="AuditReportDistributedDate__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      <abbr class="slds-required"> </abbr>Capa Report Due Date</label>
+                                    <div class="text-bold ">
+                                    <lightning-input-field
+                                        
+                                        class="text-bold" 
+                                        variant="label-hidden" 
+                                        field-name="CapaReportDueDate__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      <abbr class="slds-required"> </abbr>Capa Report Received Date</label>
+                                    <div class="">
+                                    <lightning-input-field 
+                                        class="text-bold" 
+                                        
+                                        variant="label-hidden" 
+                                        field-name="CapaReportReceivedDate__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                      <abbr class="slds-required"> </abbr>Capa Report Approved Date</label>
+                                    <div class="">
+                                    <lightning-input-field 
+                                        class="text-bold" 
+                                        
+                                        variant="label-hidden" 
+                                        field-name="CapaReportApprovedDate__c">
+                                    </lightning-input-field>                    
+                                    </div>
+                                </div>
+                            </div>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section class="bg-accordion" name="E" label="Results">
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Audit Result</label>
+                                <div class="text-bold ">
+                                <lightning-input-field 
+                                    class="text-bold" 
+                                    
+                                    variant="label-hidden" 
+                                    field-name="AuditResult__c">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Audit Summary</label>
+                                <div class="text-bold ">
+                                <lightning-input-field 
+                                    class="text-bold" 
+                                    
+                                    variant="label-hidden" 
+                                    field-name="AuditSummary__c">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Risk Score</label>
+                                <div class="text-bold ">
+                                <lightning-input-field 
+                                    class="text-bold" 
+                                    
+                                    variant="label-hidden" 
+                                    field-name="RiskScore__c">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Recommendations</label>
+                                <div class="text-bold ">
+                                <lightning-input-field 
+                                    class="text-bold" 
+                                    
+                                    variant="label-hidden" 
+                                    field-name="Recommendations__c">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section class="bg-accordion" name="F" label="System Information ">
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Created By</label>
+                                <div class="text-bold ">
+                                <lightning-input-field 
+                                    class="text-bold" 
+                                    
+                                    variant="label-hidden" 
+                                    field-name="CreatedById">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-p-bottom_x-small text-gray " for="text-input-id-47">
+                                  <abbr class="slds-required"> </abbr>Last Modified By</label>
+                                <div class="text-bold ">
+                                <lightning-input-field 
+                                    class="text-bold" 
+                                    
+                                    variant="label-hidden" 
+                                    field-name="LastModifiedById">
+                                </lightning-input-field>                    
+                                </div>
+                            </div>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                        
+                            <div class="slds-var-m-top_medium">
+                                <lightning-button
+                                    variant="brand"
+                                    type="submit"
+                                    name="save"
+                                    label="Save"
+                                ></lightning-button>
+                            </div>
+                        </lightning-record-edit-form>
+                    </div>  
+                </div>
+          </div>
+          <div class="slds-col slds-order_2 slds-large-size_8-of-12 
+          slds-max-small-size_12-of-12 slds-small-size_12-of-12 
+          slds-size_8-of-12 slds-medium-size_12-of-12 slds-max-medium-size_12-of-12
+          slds-size_8-of-12">
+          <div class="slds-m-bottom_medium">
+                
+       
+                <c-record-list
+                    record-id={recordId}
+                    object-api-name='Product2'>
+                </c-record-list>
+                <c-record-list
+                record-id={recordId}
+                object-api-name='AuditActivityResource__c'>
+            </c-record-list>
+            </div>
+            </div>
+           
+            </div>
+           
+            <div class="slds-m-bottom_medium"> 
+                
+            </div>
+            <div class="slds-m-bottom_medium"> 
+                
+            </div>
+            <div class="slds-m-bottom_medium"> 
+                
+            </div>
+            <div class="slds-m-bottom_medium"> 
+                
+            </div>
+            <div class="slds-m-bottom_medium"> 
+                
+            </div>
+            <div class="slds-m-bottom_medium"> 
+                
+            </div>
+          </div>
+    </div>
+    
+   
+       <!-- <lightning-card title="RelatedListsInfo">
+            <template if:true={relatedLists}>
+                <div class="slds-m-around_medium">
+                    <template for:each={relatedLists} for:item="relatedList">
+                        {recordId}
+                    
+                    </template>
+                </div>
+            </template>
+        </lightning-card>-->
+        <!--<div>
+            <c-record-related-list            
+            related-list-id ="Audit_Activities__r" 
+            record-id={recordId}>
+        </c-record-related-list>
+        </div>-->
+<!--
+        <lightning-card title="Products">
+            <template if:true={displayProductsColumns}>
+                <div class="slds-m-around_medium">
+                    <template for:each={displayProductsColumns} for:item="col">
+                        <p key={col.fieldApiName}>
+                            {col.label}
+                        </p>
+                    </template>
+                </div>
+            </template>
+        </lightning-card>
+    -->
+    
+
+</template>

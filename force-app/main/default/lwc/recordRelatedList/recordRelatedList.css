@@ -1,0 +1,40 @@
+:host{
+    --slds-c-card-color-background: #FFFF;
+    --slds-c-button-brand-color-background: var(#2A388D);
+    --dxp-s-button-font-weight:900;
+    --dxp-s-button-font-size:1.25rem;
+    
+}
+.newButton{
+--slds-c-button-font-weight:400;
+--dxp-s-button-font-size:0.9rem;
+--dxp-s-button-font-weight:600;   
+--sds-c-button-text-color :#181818;
+}
+.eighty-percent {
+    zoom: 90%;
+}
+.slds-accordion__summary-action-icon {
+
+}
+.slds-accordion__summary-action svg{
+    
+}
+/*border: var(--slds-c-button-sizing-border,
+var(--sds-c-button-sizing-border,1px)) solid var(--slds-c-button-color-border,var(--sds-c-button-color-border,transparent));
+/*
+.accordionClass{
+    --slds-c-accordion-heading-font-size:1.5rem;
+    --slds-c-accordion-heading-font-weight:900;
+    --slds-c-accordion-section-font-weight:900;
+    font-weight: 900;
+}
+.slds-accordion__section h2{
+    font-weight: 900;
+}
+.slds-button.slds-accordion__summary-action {
+    color: var(--sds-c-accordion-heading-text-color,var(--dxp-g-root-contrast));
+    font-weight: var(--dxp-s-button-font-weight, 900);
+    font-weight: var(900);
+    font-size: large;
+}*/

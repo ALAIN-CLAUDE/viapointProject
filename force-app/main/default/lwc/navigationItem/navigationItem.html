@@ -1,0 +1,12 @@
+<template>
+    <template if:true ={isExistSubMenu}>
+      <div class="dropdown">
+        <a href={actionValueLink} class="dropbtn">{label}</a>
+        <div class="dropdown-content">
+          <template for:each={subMenu} for:item="subMenuItem">
+            <a key={subMenu.Id} href={subMenuItem.actionValue}>{subMenuItem.label}</a>
+          </template>
+        </div>
+      </div>
+    </template>
+</template>

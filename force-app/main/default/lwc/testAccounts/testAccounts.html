@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Display User Role" icon-name="custom:custom63">
+        <lightning-combobox
+            name="Role"
+            label="Role Name"
+            placeholder="Choose Role"
+            value={value}
+            onchange={handleChange}
+            options={roleOptions}>
+        </lightning-combobox>
+        <p></p>
+        Selected Value:
+        <lightning-formatted-text title="Chosen Key" value={selectedValue}></lightning-formatted-text>
+    </lightning-card>
+
+</template>

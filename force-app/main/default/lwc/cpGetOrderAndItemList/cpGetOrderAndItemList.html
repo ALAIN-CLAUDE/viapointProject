@@ -1,0 +1,13 @@
+<template>
+    <lightning-card icon-name="custom:custom84" title="Order(s)">
+        <div class="slds-p-around_medium">
+            <template if:true={OrdObj}>
+                <c-custom-data-table class="slds-max-medium-table_stacked" onvaluechange={handleValueChange}
+                oncellchange={handleCellChange} data={OrdObj} columns={columns} show-row-number-column="false"
+                key-field="Id" draft-values={draftValues} onsave={handleSave} data-record="Id" onedit={handleEdit}
+                hide-checkbox-column="true" oncancel={handleCancel}>
+               </c-custom-data-table>
+            </template>
+        </div>
+    </lightning-card>
+</template>

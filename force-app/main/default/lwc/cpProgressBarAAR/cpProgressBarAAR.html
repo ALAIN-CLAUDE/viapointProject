@@ -1,0 +1,9 @@
+<template>
+    <div class="slds-box index-style container" style="background-color:rgb(250, 249, 248); ">   
+    <lightning-progress-indicator current-step={auditKeyStatus} type="path" variant="base">
+        <template for:each={auditWorkflowStatus} for:item="step">
+            <lightning-progress-step class="index-style" label={step.label} value={step.value} key={step.label}></lightning-progress-step>
+        </template>
+    </lightning-progress-indicator>   
+</div>
+</template>

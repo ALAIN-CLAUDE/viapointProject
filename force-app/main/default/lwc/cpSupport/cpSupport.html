@@ -1,0 +1,82 @@
+<template>
+    <div class="container slds-m-bottom_medium">
+        <div class="slds-page-header__title slds-p-around_x-small slds-truncate">
+        <a href={ticketUrl}>Support Tickets</a>   
+        </div>
+        <template if:true={isLoading}>
+    <div class="slds-grid slds-wrap" >
+        <template for:each={caseData} for:item="income">           
+            <div key={income.recordId} class="slds-col slds-box_x-small            
+            slds-large-size_1-of-2 
+            slds-max-small-size_2-of-2 slds-small-size_2-of-2 
+            slds-size_1-of-2 slds-medium-size_2-of-2  
+            slds-max-medium-size_2-of-2"
+            >
+        <div class={income.unitClass}> 
+            <div class="slds-p-top_xx-medium slds-clearfix slds-p-around_x-small">
+                <div class="slds-box_x-small slds-text-body_small text-gray">
+                    <p class="slds-float_left">Status</p>
+                    <p class="slds-float_right">Type</p>
+                      
+                </div>
+                <div class="slds-box_x-small">
+                    <p class="slds-float_left text-bold">{income.Status}</p> 
+                    <p class=" slds-float_right text-bold">{income.Type}</p>
+                </div>
+            </div>
+        <div class="slds-align_absolute-center text-bold">
+            <c-record-link
+            object-api-name={objectApiName}
+            record-id={income.Id}
+            label={income.SubjectValue}>
+        </c-record-link>      
+        </div>
+        <div class="slds-align_absolute-center">
+            <p class="text-bold">
+                {income.CaseNumber}
+            </p> 
+        </div>        
+        <div class="slds-box_xxx-small slds-icon slds-icon_x-small slds-align_absolute-center slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"> 
+                <c-cp-edit-menu item={income}></c-cp-edit-menu>                 
+            </div>
+        <div class="slds-p-bottom_x-small slds-p-horizontal_x-small">   
+            <div class="slds-clearfix ">
+                <div class="slds-box_x-small slds-text-body_small text-gray">
+                    <p class="slds-float_left">Opened</p>
+                    <p class="slds-float_right">Assigned To</p>                      
+                </div>
+                <div class="slds-box_x-small">
+                    <div class="slds-float_left text-bold">{income.createdDateFormat}</div> 
+                   <div class=" slds-float_right text-bold">{errorUser}
+                    <template if:true={income.noAssegnedUser}>
+                    <span aria-describedby="help" 
+                        data-target-id={income.Id} 
+                        onmouseenter={handleMouseover} 
+                        onmouseleave={handleMouseLeave}
+                        style="padding-left:1rem;padding-top:4rem;position:relative"
+                        aria-disabled="true">                        
+                            <img class="slds-float_right record-avatar-container 
+                            slds-avatar slds-avatar_x-small 
+                            slds-avatar--circle 
+                            slds-m-left_xx-large"  
+                            src={income.assignSmallPhotoUrl} >
+                    <div class="slds-popover slds-hide slds-slide-from-top-to-bottom slds-popover_tooltip slds-nubbin_bottom-left" 
+                        role="tooltip" data-id={income.Id} style="position:absolute;top:-4px;left:35px">
+                        <div class="slds-popover__body">{income.Owner.Name}</div>
+                    </div>
+                    </span>
+                    </template>
+                    <template if:false={income.noAssegnedUser}>
+
+                    </template>  
+                </div>
+                </div>
+            </div>     
+        </div>                              
+    </div>   
+    </div>
+    </template>
+    </div>
+</template>
+</div>  
+</template>

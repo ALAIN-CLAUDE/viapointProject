@@ -1,0 +1,47 @@
+<template>
+  <div class="slds-box_xxx-small header-bg">
+  <div class="slds-grid slds-wrap container-header">   
+    <div class="slds-size_1-of-12 slds-p-top_medium">
+      <div class="logoContainer slds-p-left_medium"> 
+        <img src={logoImage}>
+      </div>
+    </div>
+    <div class="slds-size_6-of-12 slds-p-top_large">
+      <div class="slds-float_right label text-bold">Organization:</div>
+    </div>
+    <div class="slds-size_4-of-12">
+      <div>
+        <c-cp-set-default-account-header></c-cp-set-default-account-header>
+      </div>
+    </div>
+    <div class="slds-size_1-of-12 slds-p-top_large">
+      <div class="user-image slds-p-right_medium">        
+              <img  class="user-image slds-float_right record-avatar-container 
+              slds-avatar slds-avatar_medium 
+              slds-avatar--circle"  
+              src={userProfilePicsUrl} >
+      <div class="slds-clearfix">           
+      <div class="user-menu slds-float_right">
+        <c-user-profile-menu></c-user-profile-menu>
+      </div>
+      </div>
+    </div> 
+    </div>
+</div>
+    <div class="slds-box_xxx-small navigation-bg">
+      <div class="slds-grid slds-wrap container-header">
+      <div class="topnav" id="myTopnav">
+        <template for:each={menuItems} for:item="item">
+          <template if:true ={item.menuSize} >
+            <a key={item.idValue} href={mainMenuItem}>{item.label}</a>
+          </template>
+          <template if:false ={item.menuSize} >
+            <c-navigation-item key={item.id} item={item} mainurl={mainMenuItem}></c-navigation-item> 
+          </template>                
+        </template>
+      </div>
+      </div>
+    </div>
+   
+  </div>
+</template>

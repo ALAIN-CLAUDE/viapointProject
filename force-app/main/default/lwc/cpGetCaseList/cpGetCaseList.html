@@ -1,0 +1,127 @@
+<template>
+           <!--this is header section--> 
+           <div class="slds-card" >
+        
+            <div class="slds-card__header slds-grid">
+              <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                  <div class="slds-media__figure">
+                  <lightning-icon icon-name="custom:custom84" size="small"></lightning-icon>           
+                  </div>
+                  <div class="slds-media__body">
+                  <h2 class="slds-card__header-title">
+                      <a href="#" class="slds-card__header-link slds-truncate" title="Support Tickets">
+                      <span>Support Tickets</span>
+                      </a>
+                  </h2>
+                  </div>
+                  <div class="slds-no-flex">
+                  <button class="slds-button slds-button_neutral" onclick={handleNewButton}>New</button>
+                  </div>
+              </header>
+              </div>
+          
+              <!--this is datatable section--> 
+   
+        <div class="slds-m-around_medium">
+            <template if:true={CaseObj}>
+                <lightning-datatable key-field="Id" 
+                data={CaseObj} 
+                columns={columns} 
+                onsave={saveHandleAction}
+                draft-values={fldsItemValues} 
+                hide-checkbox-column 
+                show-row-number-column>
+               </lightning-datatable>
+            </template>
+        </div>
+    </div> 
+
+
+               <!--this is modal inside the New button section starts here-->   
+               <template if:true={isModalOpen}>          
+                <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+                 <div class="slds-modal__container">
+                   <header class="slds-modal__header">
+                     <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                           
+                       <lightning-icon icon-name="utility:close"
+                       alternative-text="close"
+                       variant="inverse"
+                       size="small" ></lightning-icon>
+                       <span class="slds-assistive-text">Close</span>
+                     </button>  
+                   <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">New Support Ticket</h2>
+                   </header>
+                   <div class="slds-modal__content slds-p-around_small" id="modal-content-id-1">
+                     <lightning-card>
+                     <template if:true={loaded}>
+                       <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+                   </template>
+                   <h3   class="test-id__section-header-container padder slds-section__title slds-theme--shade">
+                    <span  class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate"></span>
+                    </h3>
+                     
+                 <!-- <div class="slds-var-p-around_small">  -->
+                     <div class="align-with-title">
+    
+                         <lightning-input
+                           class="validate"
+                           label="Subject"
+                           name="Subject"
+                           required
+                           type="text"
+                           value={subjectValue}
+                           onchange={CaseHandleChange}
+                         ></lightning-input>
+        
+               <br>
+               <lightning-textarea 
+               class="validate"
+               label="Description"
+               name="Description"
+               required
+               type="text Area"
+               value={descriptionValue}
+               onchange={CaseHandleChange}>
+               
+               </lightning-textarea>
+    
+    
+                        
+   
+    
+                     </div>
+                   </lightning-card>
+                   </div>
+                 
+                   <footer class="slds-modal__footer">
+                             
+                   <div class="slds-align_absolute-center slds-border_leftslds-border_left" style="height: 2.5rem">
+                     <div class="slds-clearfix slds-border_leftslds-border_left" style="margin-right:5px">
+                     <div class="slds-float_left">
+                       <lightning-button  variant="neutral" label="Cancel" title="Cancel" onclick={closeModal}>Cancel</lightning-button>
+                     </div>
+                 </div>
+                 <div class="slds-clearfix slds-border_leftslds-border_left" >
+                     <div class="slds-align_absolute-center">
+                       <lightning-button label="Save &amp; New" variant="neutral" type="submit" onclick={handleSaveAndNew}> </lightning-button>
+                     </div>
+                 </div>
+                 <div class="slds-clearfix slds-border_leftslds-border_left" style="margin-left:5px">
+                     <div class="slds-float_right">
+                       <lightning-button label="Save" variant="brand" type="submit" onclick={handleSave}></lightning-button>
+                     </div>
+                 </div>
+               </div>
+           
+                   </footer>
+                 </div>
+               </section>
+               <div class="slds-backdrop slds-backdrop_open"></div>
+           
+             </template>
+        
+            
+    
+    <!-- modal end -->
+</template>

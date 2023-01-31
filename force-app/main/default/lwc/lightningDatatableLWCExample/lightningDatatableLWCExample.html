@@ -1,0 +1,15 @@
+<template>
+  <template if:true={data}>
+
+    <lightning-datatable 
+    data={data}
+    columns={columns}
+    key-field="id"
+    hide-checkbox-column="true"
+    show-row-number-column
+    onrowaction={handleRowActions}
+   >
+  </lightning-datatable>
+     </template>
+    
+  </template>

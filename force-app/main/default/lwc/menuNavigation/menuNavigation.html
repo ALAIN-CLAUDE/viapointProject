@@ -1,0 +1,9 @@
+<template>
+    <div class="topnav" id="myTopnav">
+        <template for:each={userMenuItems} for:item="item">
+          <template if:true ={item.menuSize} >
+            <a key={item.Id} href={item.target}>{item.label}</a>
+          </template>                
+        </template>
+    </div>  
+</template>

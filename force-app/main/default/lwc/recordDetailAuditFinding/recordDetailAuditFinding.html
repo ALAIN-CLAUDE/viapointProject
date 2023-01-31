@@ -1,0 +1,26 @@
+<template>
+    <div class="slds-grid slds-gutters slds-wrap">
+        <div class="slds-col slds-order_1                     
+            slds-large-size_4-of-12 slds-max-small-size_12-of-12 slds-small-size_12-of-12 
+            slds-size_4-of-12 slds-medium-size_12-of-12 slds-max-medium-size_12-of-12
+            slds-size_4-of-12">
+            <c-accordion-form-audit-finding
+                record-id={recordId}
+                object-api-name={objectApiName}
+            >
+           </c-accordion-form-audit-finding>
+        </div>
+        <div class="slds-col slds-order_2 slds-large-size_8-of-12 
+        slds-max-small-size_12-of-12 slds-small-size_12-of-12 
+        slds-size_8-of-12 slds-medium-size_12-of-12 slds-max-medium-size_12-of-12
+        slds-size_8-of-12">
+        <div class="bg-accordion slds-m-bottom_medium"> 
+            <c-record-related-capa
+                record-id={recordId}
+                object-api-name='Capa__c'
+            >
+        </c-record-related-capa>
+        </div>
+        </div>
+    </div>
+    </template>

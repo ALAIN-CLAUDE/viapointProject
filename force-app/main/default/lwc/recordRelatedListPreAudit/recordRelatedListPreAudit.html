@@ -1,0 +1,61 @@
+<template>
+    <lightning-accordion
+    allow-multiple-sections-open
+    active-section-name={activeSections}
+    class="accordionClass"
+    >
+    <div class="slds-p-around_small slds-m-top_x-small slds-float_right">
+        <button onclick={handleNew} class="slds-button slds-button_neutral newButton">New</button>
+    </div>
+    <lightning-accordion-section class="bg-accordion headertitle" name="A" label={labelPreAuditQuestionnaires}>
+      <div class="bg-accordion slds-m-bottom_medium">
+         
+                
+            <lightning-datatable
+                key-field="id"
+                data={records}
+                columns={columns}
+                sorted-by={sortBy}
+                onsort={handleSortData}
+                sorted-direction={sortDirection}
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+    
+       
+          </div>
+  </lightning-accordion-section>
+  </lightning-accordion>
+    <!--
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_2-of-3">
+            
+            <c-object-header object-api-name={objectApiName} plural="true">
+                <h2 style="font-weight:700;" class="slds-text-heading_medium">
+                    Pre Audit Questionnaires ({countRecords})</h2>
+         
+            </c-object-header>
+        
+        </div>
+       
+        <div class="slds-col slds-size_1-of-3">
+      <div class="slds-p-around_small slds-float_right">
+            <lightning-button onclick={handleNew} label="New" variant="brand"></lightning-button>
+        </div>
+        </div>
+    </div>
+    <div>
+        
+        <lightning-datatable
+        key-field="id"
+        data={records}
+        columns={columns}
+        sorted-by={sortBy}
+        onsort={handleSortData}
+        sorted-direction={sortDirection}
+        onrowaction={handleRowAction}>
+</lightning-datatable>
+
+    </div>
+
+-->
+</template>

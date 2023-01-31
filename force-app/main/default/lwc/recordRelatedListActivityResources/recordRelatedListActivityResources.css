@@ -1,0 +1,15 @@
+:host{
+    --slds-c-card-color-background: #FFFF;
+    --slds-c-button-brand-color-background: var(#2A388D);
+    --dxp-s-button-font-weight:900;
+    --dxp-s-button-font-size:1.25rem;
+}
+.newButton{
+    --slds-c-button-font-weight:400;
+    --dxp-s-button-font-size:0.9rem;
+    --dxp-s-button-font-weight:600;    
+    --sds-c-button-text-color :#181818;
+ }
+ .eighty-percent {
+    zoom: 90%;
+}

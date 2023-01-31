@@ -1,0 +1,64 @@
+<template>
+    <lightning-card  icon-name="standard:sales_value" size="small" style="background-color: #F62217 " >
+      
+    <div class="slds-grid slds-wrap">
+        <template for:each={audObj} for:item="aud">
+              <div class="slds-size_1-of-2 slds-col slds-p-around_small" key={aud.Id}>
+                
+                    <div  class="slds-box" style={aud.styleColor}>
+
+                        <lightning-layout multiple-rows="true">
+                            <lightning-layout-item  size="6">
+                                <div style="float: left;">  
+                            Status<br/>
+                            <strong> {aud.AuditWorkflowStatus__c}</strong>
+                            </div>
+                            </lightning-layout-item>
+                            
+                            <lightning-layout-item  size="6">
+                                <div style="text-align: right; float: right;">
+                                Start<br/>
+                            <strong> 10 Aug 2022</strong></div>
+                            </lightning-layout-item>
+                            <lightning-layout-item  size="12">
+                                
+                                        <center class="slds-m-top_x-small"> <strong style="color: rgb(0, 95, 178);">
+                                            <lightning-formatted-url value={aud.auditUrl} label={aud.AuditTitle__c} >
+                                            </lightning-formatted-url>
+                                            </strong><br/>
+                                    {aud.Name}<br/>
+                                    <lightning-button-menu name={aud.Id}  icon-size="x-small" onselect={handleMenuSelect} alternative-text="Show menu" menu-alignment="auto">
+                                        <lightning-menu-item name={aud.Id} value="Edit" label="Edit"></lightning-menu-item>
+                                        <lightning-menu-item name={aud.Id}  value="Delete" label="Delete"></lightning-menu-item>
+                             </lightning-button-menu>
+                                </center> 
+                                   
+                            </lightning-layout-item>
+                            
+                                    <lightning-layout-item  size="6">
+                                        <div style="float: left;">  
+                                    Department<br/>
+                                        <strong>{aud.AuditDepartment__r.Name}</strong>
+                                        </div>
+                                    </lightning-layout-item>
+                                    
+                                    <lightning-layout-item  size="6">
+                                        <div style="text-align: right; float: right;">                                         
+                                              Lead Auditor
+                                               <br/>
+                                               <div  class="slds-grid"><span  class="record-avatar-container slds-avatar slds-avatar_x-small slds-avatar--circle slds-m-left_xx-large">
+                                                <img src={UserProfilePicsUrl} title="User" alt="User"></span></div>
+                                           
+                                        
+                                    </div>
+                                </lightning-layout-item>
+                                
+                        </lightning-layout>
+                    </div>
+
+               
+              </div>
+        </template>
+   </div>
+</lightning-card>
+  </template>

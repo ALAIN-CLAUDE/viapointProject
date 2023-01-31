@@ -1,0 +1,308 @@
+<template>
+    <div class="container-main  slds-m-bottom_medium"> 
+        <div class="slds-grid">
+        <div class="slds-col slds-size_4-of-12 ">
+        <a class="slds-p-around_x-small slds-page-header__title slds-truncate header-section" href={urlAvailableProducts}>
+            Available Products {countProducts}
+        </a>
+        </div>
+        <div class="slds-col slds-size_8-of-12 slds-float_right">
+            <div class="inline-view slds-float_right">                
+            <div class="dropdown"  >
+                <div class="filter-button slds-p-top_x-small" onclick={showDropDown} data-target-id="button-id"> 
+                    <svg class="slds-icon-text-default slds-icon slds-p-right_x-small" aria-hidden="true">
+                        <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#filterList"></use>
+                    </svg>   
+                    Filter By               
+                </div>
+                <div class="dropdown-content" data-id="button-id">
+                    <div class="slds-p-vertical_small clear-button">
+                        <a class=" slds-text-align_right" onclick={notFilteredData} data-target-id="clear-id">                         
+                           Clear All              
+                        </a>
+                    </div>
+                    <div>
+                        <input onclick={searchFunction}  data-target-id="search-id"
+                        class="classInpit"
+                            name="enter-search"                           
+                            type="search"
+                        ></input>
+                    </div>
+                <lightning-accordion
+                    allow-multiple-sections-open
+                    active-section-name={activeSections} class="accordionClass">
+                <lightning-accordion-section class="bg-accordion accordionClass" name="A" label="Product Family">
+                   <ul>
+                    <template for:each={familyStatus} for:item="step">                     
+                        <li class="hidden" onclick={filterFamily} key={step.label} data-target-id={step.label} data-filter={step.label}>
+                           {step.value}                                                         
+                           <svg data-id={step.label} class="hide-icon slds-float_right slds-button__icon slds-button__icon_right" aria-hidden="true">
+                                <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                            </svg>
+                        </li>                      
+                        
+                       
+                    </template>
+                </ul>
+                </lightning-accordion-section>
+                <lightning-accordion-section class="bg-accordion accordionClass" name="C" label="Status">
+                    <ul>
+                    <li class="hidden"  onclick={filterStatus} data-target-id="Active" data-filter="Active">
+                        Active                           
+                        <svg data-id="Active" class="hide-icon slds-float_right slds-button__icon slds-button__icon_right" aria-hidden="true">
+                            <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                        </svg>
+                    </li>
+                    <li class="hidden"  onclick={filterStatus} data-target-id="Inactive" data-filter="Inactive">
+                        Inactive                           
+                        <svg data-id="Inactive" class="hide-icon slds-float_right slds-button__icon slds-button__icon_right" aria-hidden="true">
+                            <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#switch"></use>
+                        </svg>
+                    </li>
+                    </ul>
+                </lightning-accordion-section>
+                </lightning-accordion>
+                </div>
+            </div>
+            </div> 
+            <div class=" inline-view slds-float_right">
+                <div class="dropdown">
+                <a data-target-id="sortAll" class="filter-button">
+                    <svg class="slds-icon slds-icon-text-default slds-p-right_x-small" aria-hidden="true">
+                        <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#sort"></use>
+                    </svg> Sort
+                </a>
+                <div class="dropdown-content" data-id="sortAll">
+                    <div class="slds-p-vertical_small clear-button">
+                        <a class=" slds-text-align_right" onclick={notFilteredData} data-target-id="clear-id">                         
+                           Clear All              
+                        </a>
+                    </div>
+                   <ul>
+                                       
+                        <li class="hidden" onclick={handleSortData}>
+                            Product Family                                                        
+                           <svg class="hide-icon slds-float_right slds-button__icon slds-button__icon_right" aria-hidden="true">
+                                <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                            </svg>
+                            <svg class="hide-icon slds-float_right slds-button__icon slds-button__icon_right" aria-hidden="true">
+                                <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#arrowup"></use>
+                            </svg>
+                        </li> 
+                                        
+                        <li class="hidden" onclick={handleSortData} >
+                            Product Name                                                       
+                            <svg class="hide-icon slds-float_right slds-button__icon slds-button__icon_right" aria-hidden="true">
+                                <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                            </svg>
+                            <svg class="hide-icon slds-float_right slds-button__icon slds-button__icon_right" aria-hidden="true">
+                                <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#arrowup"></use>
+                            </svg>
+                        </li>                      
+                                        
+                        <li class="hidden" onclick={handleSortData}  >
+                            Status                                                        
+                            <svg class="hide-icon slds-float_right slds-button__icon slds-button__icon_right" aria-hidden="true">
+                                <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                            </svg>
+                            <svg class="hide-icon slds-float_right slds-button__icon slds-button__icon_right" aria-hidden="true">
+                                <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#arrowup"></use>
+                            </svg>
+                        </li> 
+                       
+                    
+                </ul>
+                </div>
+                </div>
+    
+            </div>  
+        <!--
+        <div class="  slds-p-right_medium slds-float_right">
+            <div class="inline-view dropdown">
+                <button  data-target-id="myInput" class="dropbtn">Filter By</button>
+                <div id="myDropdown"  data-id="myInput" class="dropdown-content">
+                
+                
+                    <lightning-accordion
+                    allow-multiple-sections-open
+                    active-section-name={activeSections} class="accordionClass">
+                <lightning-accordion-section class="bg-accordion accordionClass" name="A" label="Product Family">
+                    <template for:each={familyStatus} for:item="step">
+                        <a href="#" onclick={filterFamily} data-filter={step.label} key={step.label}>{step.value}</a>
+                    </template>
+                </lightning-accordion-section>
+                <lightning-accordion-section class="bg-accordion accordionClass" name="B" label="Product Name">
+                    <input type="text" data-id="search-value" class="searchInput" placeholder="Search.."  onkeyup={filterName}>
+                </lightning-accordion-section>
+                <lightning-accordion-section class="bg-accordion accordionClass" name="C" label="Status">
+                    <a href="#" onclick={filterStatus} data-filter="Active" >Active</a>
+                    <a href="#" onclick={filterStatus} data-filter="Inactive">Inactive</a>
+                </lightning-accordion-section>
+                </lightning-accordion>
+            </div>
+            </div>
+        </div>
+        <div class="   slds-p-right_medium slds-float_right">
+            <div class="inline-view  sortAll">
+                <button  data-target-id="sortAll" class="dropbtn">Sort</button>
+            </div>
+        </div>
+        -->
+        </div>  
+        </div>     
+    
+        
+    <div class="slds-grid slds-wrap">
+        <template if:true={filteredData}>
+            <template for:each={filterDataResults} for:item="product">           
+                <div key={filterDataResults.Id} class="slds-col slds-box_x-small            
+                slds-large-size_1-of-2 
+                slds-max-small-size_2-of-2 slds-small-size_2-of-2 
+                slds-size_1-of-2 slds-medium-size_2-of-2  
+                slds-max-medium-size_2-of-2">
+                <div class="product-card">
+                    <div class="imageBlock" style={product.imageLogoCss}>
+                        <div>
+                            <img src={product.ProductCardImage__c} style="width:300px;height:130px;" />
+                        </div>
+        
+                    </div> 
+                    <div class={product.unitClass}>
+                        
+                        <div class="slds-p-top_xx-medium slds-clearfix slds-p-around_x-small">
+                            <div class="slds-box_x-small slds-text-body_small text-gray">
+                                <p class="slds-float_left">Status</p>
+                                <p class="slds-float_right">Family</p>       
+                            </div>
+                            <div class="slds-box_x-small">
+                                <p class="slds-float_left text-bold">{product.status}</p> 
+                                <p class=" slds-float_right text-bold">{product.Family}</p>
+                            </div>
+                        </div>
+                        <div class="slds-align_absolute-center text-bold">
+                        <c-record-link
+                            object-api-name={objectApiName}
+                            record-id={product.Id}
+                            label={product.Name}>
+                        </c-record-link>    
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <p class="text-bold">
+                                PR-000001
+                            </p> 
+                        </div>
+                        <div class="slds-box_xxx-small slds-icon slds-icon_x-small slds-align_absolute-center slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"> 
+                            <c-cp-edit-menu item={product}></c-cp-edit-menu>     
+                        </div>
+                        <div class="slds-p-bottom_x-small">
+                        <div class="slds-clearfix slds-p-horizontal_x-small">
+                            <div class="slds-box_x-small slds-text-body_small text-gray">
+                                <p class="slds-float_left">Code</p>
+                                <p class="slds-float_right">Owner</p>                      
+                            </div>                                  
+                            <div class="slds-box_x-small">
+                                <div class="slds-float_left text-bold">{product.ProductCode}</div> 
+                                <div class="slds-float_right text-bold">                
+                                    <span  aria-describedby="help" 
+                                        data-target-id={product.Id} 
+                                        onmouseenter={handleMouseover} 
+                                        onmouseleave={handleMouseLeave}
+                                        style="padding-left:1rem;padding-top:4rem;position:relative"
+                                        aria-disabled="true">
+                                        <img  class="slds-float_right record-avatar-container 
+                                        slds-avatar slds-avatar_x-small 
+                                        slds-avatar--circle 
+                                        slds-m-left_xx-large"  
+                                        src={product.CreatedBy.SmallPhotoUrl} >
+                                        <div class="slds-popover slds-hide slds-slide-from-top-to-bottom slds-popover_tooltip slds-nubbin_bottom-left" 
+                                        role="tooltip" data-id={product.Id} style="position:absolute;top:-4px;left:35px">
+                                        <div class="slds-popover__body">{product.CreatedBy.Name}</div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>                              
+                    </div>
+                </div>  
+                </div>
+            </template>
+        </template>
+        <template if:false={filteredData}>        
+        <template for:each={productData} for:item="product">           
+        <div key={productData.Id} class="slds-col slds-box_x-small            
+        slds-large-size_1-of-2 
+        slds-max-small-size_2-of-2 slds-small-size_2-of-2 
+        slds-size_1-of-2 slds-medium-size_2-of-2  
+        slds-max-medium-size_2-of-2">
+        <div class="product-card">
+            <div class="imageBlock" style={product.imageLogoCss}>
+                <div>
+                    <img src={product.ProductCardImage__c} style="width:300px;height:130px;" />
+                </div>
+
+            </div> 
+            <div class={product.unitClass}>
+                
+                <div class="slds-p-top_xx-medium slds-clearfix slds-p-around_x-small">
+                    <div class="slds-box_x-small slds-text-body_small text-gray">
+                        <p class="slds-float_left">Status</p>
+                        <p class="slds-float_right">Family</p>       
+                    </div>
+                    <div class="slds-box_x-small">
+                        <p class="slds-float_left text-bold">{product.status}</p> 
+                        <p class=" slds-float_right text-bold">{product.Family}</p>
+                    </div>
+                </div>
+                <div class="slds-align_absolute-center text-bold">
+                <c-record-link
+                    object-api-name={objectApiName}
+                    record-id={product.Id}
+                    label={product.Name}>
+                </c-record-link>    
+                </div>
+                <div class="slds-align_absolute-center">
+                    <p class="text-bold">
+                        PR-000001
+                    </p> 
+                </div>
+                <div class="slds-box_xxx-small slds-icon slds-icon_x-small slds-align_absolute-center slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"> 
+                    <c-cp-edit-menu item={product}></c-cp-edit-menu>     
+                </div>
+                <div class="slds-p-bottom_x-small">
+                <div class="slds-clearfix slds-p-horizontal_x-small">
+                    <div class="slds-box_x-small slds-text-body_small text-gray">
+                        <p class="slds-float_left">Code</p>
+                        <p class="slds-float_right">Owner</p>                      
+                    </div>                                  
+                    <div class="slds-box_x-small">
+                        <div class="slds-float_left text-bold">{product.ProductCode}</div> 
+                        <div class="slds-float_right text-bold">                
+                            <span  aria-describedby="help" 
+                                data-target-id={product.Id} 
+                                onmouseenter={handleMouseover} 
+                                onmouseleave={handleMouseLeave}
+                                style="padding-left:1rem;padding-top:4rem;position:relative"
+                                aria-disabled="true">
+                                <img  class="slds-float_right record-avatar-container 
+                                slds-avatar slds-avatar_x-small 
+                                slds-avatar--circle 
+                                slds-m-left_xx-large"  
+                                src={product.CreatedBy.SmallPhotoUrl} >
+                                <div class="slds-popover slds-hide slds-slide-from-top-to-bottom slds-popover_tooltip slds-nubbin_bottom-left" 
+                                role="tooltip" data-id={product.Id} style="position:absolute;top:-4px;left:35px">
+                                <div class="slds-popover__body">{product.CreatedBy.Name}</div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div> 
+            </div>                              
+            </div>
+        </div>  
+        </div>
+    </template>
+    </template>
+    </div>
+    </div>
+</template>

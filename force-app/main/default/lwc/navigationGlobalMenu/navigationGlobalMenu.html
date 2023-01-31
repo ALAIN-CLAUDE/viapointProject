@@ -1,0 +1,205 @@
+<template>
+  <div class="header-bg slds-grid slds-grid_vertical-align-end">
+    <div class="slds-size_3-of-5">
+      <div class="slds-m-around_x-small">IMAGE</div>
+    </div>
+    <div class="slds-size_1-of-5">
+      <div class="slds-text-align_right  slds-m-around_x-small">
+        <c-cp-set-default-account></c-cp-set-default-account>
+      </div>
+    </div>
+    <div class="slds-size_1-of-5">
+      <div class="slds-text-align_right slds-m-around_x-small">User</div>
+    </div>
+  </div>
+  <div class="slds-context-bar">
+    <nav class="slds-context-bar__secondary" role="navigation">
+      <ul class="slds-grid">
+        <li class="slds-context-bar__item">
+          <a href="#" class="slds-context-bar__label-action" title="Home">
+            <span class="slds-truncate" title="Home">Home</span>
+          </a>
+        </li>
+        <li class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click">
+          <a href="#" class="slds-context-bar__label-action" title="Menu Item">
+            <span class="slds-truncate" title="Menu Item">Organization</span>
+          </a>
+          <div class="slds-context-bar__icon-action slds-p-left_none">
+            <a data-target-id="menuOrganization" class="slds-button slds-button_icon slds-button_icon slds-context-bar__button"
+              onclick={handleSubMenu}  onmouseenter={handleMouseover} 
+              onmouseleave={handleMouseLeave}
+            aria-haspopup="false" title="Open menu item submenu">
+              <svg class="slds-button__icon" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+              </svg>
+              <span class="slds-assistive-text">Open menu item submenu</span>
+            </a>
+          </div>
+          <div class="slds-dropdown slds-dropdown_right slds-hide" data-id="menuOrganization">
+            <ul class="slds-dropdown__list" role="menu">
+              <li class="slds-dropdown__item" role="presentation">
+                <a href="#" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Locations">Locations</span>
+                </a>
+              </li>
+              <li class="slds-dropdown__item" role="presentation">
+                <a href="#" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="People">People</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="slds-context-bar__item">
+          <a href="#" class="slds-context-bar__label-action" title="Products">
+            <span class="slds-truncate" title="Products">Products</span>
+          </a>
+          <div class="slds-context-bar__icon-action slds-p-left_none">
+            <button data-target-id="product" class="slds-button slds-button_icon slds-button_icon slds-context-bar__button" 
+            aria-haspopup="true"
+            title="Open menu item submenu">
+              <svg class="slds-button__icon" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+              </svg>
+              <span class="slds-assistive-text">Open menu item submenu</span>
+            </button>
+          </div>
+          <div class="slds-dropdown slds-dropdown_right slds-hide" data-id="product1">
+            <ul class="slds-dropdown__list" role="menu">
+              <li class="slds-dropdown__item" role="presentation">
+                <a href="#" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Purchased Products">Purchased Products</span>
+                </a>
+              </li>
+              <li class="slds-dropdown__item" role="presentation">
+                <a href="#" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Available Products">Available Products</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="slds-context-bar__item">
+          <a href="#" class="slds-context-bar__label-action" title="Menu Item">          
+            <span class="slds-truncate" title="Menu Item">Assessments</span>
+          </a>
+          <div class="slds-context-bar__icon-action slds-p-left_none">
+            <button class="slds-button slds-button_icon slds-button_icon slds-context-bar__button" aria-haspopup="false" title="Open menu item submenu">
+              <svg class="slds-button__icon" aria-hidden="false">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+              </svg>
+              <span class="slds-assistive-text">Open menu item submenu</span>
+            </button>
+          </div>
+          <div class="slds-dropdown slds-dropdown_right slds-hide">
+            <ul class="slds-dropdown__list" role="menu">
+              <li class="slds-dropdown__item" role="presentation">
+                <a href="#" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Audits">Audits</span>
+                </a>
+              </li>
+              <li class="slds-dropdown__item" role="presentation">
+                <a href="#" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Audit Activities">Audit Activities</span>
+                </a>
+              </li>
+              <li class="slds-dropdown__item" role="presentation">
+                <a href="#" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Audit Resources">Audit Resources</span>
+                </a>
+              </li>
+              <li class="slds-dropdown__item" role="presentation">
+                <a href="#" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Audit Activity Resources">Audit Activity Resources</span>
+                </a>
+              </li>
+              <li class="slds-dropdown__item" role="presentation">
+                <a href="#" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Audit Findings">Audit Findings</span>
+                </a>
+              </li>
+              <li class="slds-dropdown__item" role="presentation">
+                <a href="#" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="CAPAs">Corrective & Preventative Actions (CAPAs)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="slds-context-bar__item">
+          <a href="#" class="slds-context-bar__label-action" title="Menu Item">
+            <span class="slds-truncate" title="Menu Item">Support</span>
+          </a>
+          <div class="slds-context-bar__icon-action slds-p-left_none">
+            <button class="slds-button slds-button_icon slds-button_icon slds-context-bar__button" aria-haspopup="false" title="Open menu item submenu">
+              <svg class="slds-button__icon" aria-hidden="false">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+              </svg>
+              <span class="slds-assistive-text">Open menu item submenu</span>
+            </button>
+          </div>
+          <div class="slds-dropdown slds-dropdown_right slds-hide">
+            <ul class="slds-dropdown__list" role="menu">
+              <li class="slds-dropdown__item" role="presentation">
+                <a href="#" role="menuitem" tabindex="-1">
+                  <span class="slds-truncate" title="Tickets">Tickets</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!--        <nav class="slds-context-bar__secondary" role="navigation">
+<ul class="slds-grid">
+<template for:each={menuItems} for:item="item">
+<li key={item.Id} class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click">
+<a href="#" class="slds-context-bar__label-action" title={item.label}>
+<span class="slds-truncate" title={item.label}>{item.label}</span>
+</a>
+<div class="slds-context-bar__icon-action slds-p-left_none">
+<button class="slds-button slds-button_icon slds-button_icon slds-context-bar__button" aria-haspopup="true" title="Open menu item submenu">
+<svg class="slds-button__icon" aria-hidden="true">
+<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+</svg>
+<span class="slds-assistive-text">Open menu item submenu</span>
+</button>
+</div>
+<div class="slds-dropdown slds-dropdown_right">
+<ul class="slds-dropdown__list" role="menu">
+<li class="slds-dropdown__item" role="presentation">
+<a href="#" role="menuitem" tabindex="-1">
+<span class="slds-truncate" title="Main action">
+<svg class="slds-icon slds-icon_x-small slds-icon-text-default slds-m-right_x-small" aria-hidden="true">
+<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
+</svg>Main action</span>
+</a>
+</li>
+<li class="slds-dropdown__header slds-has-divider_top-space" role="separator">
+<span>Menu header</span>
+</li>
+<li class="slds-dropdown__item" role="presentation">
+<a href="#" role="menuitem" tabindex="-1">
+<span class="slds-truncate" title="Menu Item One">Menu Item One</span>
+</a>
+</li>
+<li class="slds-dropdown__item" role="presentation">
+<a href="#" role="menuitem" tabindex="-1">
+<span class="slds-truncate" title="Menu Item Two">Menu Item Two</span>
+</a>
+</li>
+<li class="slds-dropdown__item" role="presentation">
+<a href="#" role="menuitem" tabindex="-1">
+<span class="slds-truncate" title="Menu Item Three">Menu Item Three</span>
+</a>
+</li>
+</ul>
+</div>
+</li>
+</template>
+</ul>
+</nav>-->
+
+</template>

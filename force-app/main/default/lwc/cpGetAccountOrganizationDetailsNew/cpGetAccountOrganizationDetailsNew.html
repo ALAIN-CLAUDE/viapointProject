@@ -1,0 +1,71 @@
+<template>
+<div class="container slds-m-bottom_medium">
+  <div class="slds-p-around_small slds-page-header__title slds-truncate header-section">
+    Organization Profile
+  </div>
+  <div class="slds-grid slds-wrap" >
+    <template if:true={data}>
+      <template for:each={data} for:item="account">
+        <div key={account.Id} class="slds-col slds-box_x-small            
+            slds-large-size_2-of-2 
+            slds-max-small-size_2-of-2 slds-small-size_2-of-2 
+            slds-size_2-of-2 slds-medium-size_2-of-2  
+            slds-max-medium-size_2-of-2">
+        <article class="slds-card slds-clearfix slds-p-around_x-small" style="background-color:#fff;">
+        <div class="slds-p-horizontal_x-small slds-p-top_small slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+         
+            <h1>
+              <a href="#" style="font-size:16pt;" class="slds-card__header-link slds-truncate" title="Accounts">
+                <span> {account.Name}</span>
+              </a>
+            </h1>
+         
+          </header>
+        </div>
+
+        <div class="slds-form slds-box_x-small ">
+        <div class="slds-form-element slds-form-element_stacked">
+          <label class="slds-form-element__label slds-text-body_small text-gray" for="stacked-input-id-01">
+            Billing Address 
+          </label>       
+            <div  class="text-bold">{account.BillingStreet}  
+            <br/>{account.BillingCity} , {account.BillingState} {account.BillingPostalCode}   
+            <br/>{account.BillingCountry}   
+            <br/>
+          </div>
+              
+        </div>
+        <div class="slds-form-element slds-form-element_stacked slds-p-top_medium">
+          <label class="slds-form-element__label slds-text-body_small text-gray" for="stacked-input-id-01">
+            Shipping Address 
+          </label>       
+            <div  class="text-bold">{account.ShippingStreet}
+              <br/>{account.ShippingCity} , {account.ShippingState} {account.ShippingPostalCode}
+              <br/>{account.ShippingCountry}   
+            <br/>
+          </div>            
+        </div>
+
+        <div class="slds-form-element slds-form-element_stacked slds-p-top_medium ">
+          <label class="slds-form-element__label slds-text-body_small text-gray" for="stacked-input-id-02">Website</label>
+          <div class="slds-form-element__control">
+            <a class="text-bold">{account.Website}</a>
+            <br>
+          </div>
+        </div>
+        <div class="slds-form-element slds-form-element_stacked  slds-p-top_medium">
+          <label class="slds-form-element__label slds-text-body_small text-gray" for="stacked-input-id-02">Phone</label>
+          <p class="text-bold">
+          {account.Phone}
+          <br>             
+          </p>
+        </div>
+        </div>
+        </article>
+      </div>
+      </template>
+    </template>
+  </div>
+</div>
+</template>

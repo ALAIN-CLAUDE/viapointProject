@@ -1,0 +1,54 @@
+.container {
+    border-radius: 6px;
+    box-shadow: 10px 20px 40px 0 rgba(173, 181, 189, 0.1);
+    border: solid 1px rgba(129, 147, 174, 0.12);
+    background-color: #fff;
+    max-width:1800px;
+    min-width:800px;
+    padding: 2% 1%; 
+    background-color:rgb(243, 242, 241);  
+}
+.card-box {
+    /*font-family: 'Poppins', sans-serif;*/
+    font-size: 10pt;
+    border-radius: 5px 5px;
+    border: 1px solid #c9c9c9;
+    background-color:#fff;
+}
+.text-gray {
+    color: hsl(234, 12%, 34%);
+}
+.text-bold {
+    font-weight: 600;
+    color: hsl(234, 12%, 34%);
+}
+.draft {
+    border-top: 5px solid #00af66;
+    
+}
+.pendingapproval {
+    border-top: 5px solid #00af66;
+    
+}
+
+.pendingresponse {
+    border-top: 5px solid #00af66;
+}
+
+.pendingcapas {
+    border-top: 5px solid #00af66;
+    
+}
+
+.pendingclosure {
+    border-top: 5px solid  #00af66;
+}
+
+.approval {
+    border-top: 5px solid #00af66;
+    
+}
+.closed {
+    border-top: 5px solid #1B76B8;
+    
+}

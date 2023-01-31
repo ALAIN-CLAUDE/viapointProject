@@ -1,0 +1,48 @@
+<template>
+
+    <template if:true={error}>
+        <div class="slds-notify_container slds-is-relative">
+            <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small ">{errorString}</h2>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template if:true={objectInfo}>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_2-of-3">
+                
+                <c-object-header object-api-name={objectApiName} plural="true">
+                    <h2>{objectInfo.labelPlural}</h2>
+                <!-- <lightning-combobox label={objectInfo.labelPlural} value={currentListViewId}
+                        onchange={handleSelectListView} options={listViews}>
+                    </lightning-combobox>-->
+                </c-object-header>
+            
+            </div>
+           
+            <div class="slds-col slds-size_1-of-3">
+          <div class="slds-p-around_small slds-float_right">
+                <lightning-button onclick={handleNew} label="New" variant="brand"></lightning-button>
+            </div>
+            </div>
+        </div>
+
+        <template if:true={isLoaded}>
+            <div class="slds-m-top_medium">
+                <c-record-table object-info={objectInfo} list-ui={listUi} actions={actions}
+                    onrowaction={handleRowAction}>
+                </c-record-table>
+            </div>
+        </template>
+
+        <template if:false={isLoaded}>
+            <lightning-spinner variant="brand" size="large"></lightning-spinner>
+        </template>
+
+        
+    </template>
+
+</template>
